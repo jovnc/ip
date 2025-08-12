@@ -1,24 +1,46 @@
+import java.util.Scanner;
+
 public class Hermione {
 
-    private static String NAME = "Hermione";
-    private static String DIVIDER = "----------------------------------------";
+    private static final String NAME = "Hermione";
+    private static final String DIVIDER = "----------------------------------------";
+    private static final String EXIT_COMMAND = "bye";
+    private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
+        printMessage(getGreeting());
+        echo();
+        printMessage(getExit());
+    }
+
+    private static void printMessage(String message) {
         System.out.println(DIVIDER);
-        Hermione.sayGreeting();
-        System.out.println(DIVIDER);
-        Hermione.sayExit();
+        System.out.println(message);
         System.out.println(DIVIDER);
     }
 
-    private static void sayGreeting() {
+    private static String getGreeting() {
         String greeting = "Hello! I'm %s\n".formatted(NAME)
                         + "What can I do for you?";
-        System.out.println(greeting);
+        return greeting;
     }
 
-    private static void sayExit() {
+    private static String getExit() {
         String exit = "Bye. Hope to see you soon!";
-        System.out.println(exit);
+        return exit;
+    }
+
+    private static void echo() {
+        // Get user input
+        while (true) {
+            System.out.print("> ");
+            String input = scanner.nextLine().trim();
+
+            // Exit if the user types EXIT_COMMAND
+            if (input.equalsIgnoreCase(EXIT_COMMAND)) {
+                break;
+            }
+            printMessage(input);
+        }
     }
 }
