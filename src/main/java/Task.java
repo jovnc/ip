@@ -1,4 +1,4 @@
-public class Task {
+public abstract class Task {
     private final String name;
     private final int id;
     private boolean isCompleted;
@@ -15,9 +15,12 @@ public class Task {
         this.isCompleted = isCompleted;
     }
 
-    @Override
-    public String toString() {
+    public String getTaskDescription() {
         String status = this.isCompleted ? "[X]" : "[ ]";
-        return "%d. %s %s".formatted(this.id, status, this.name);
+        return "%s %s".formatted(status, this.name);
+    }
+
+    public int getId() {
+        return this.id;
     }
 }
