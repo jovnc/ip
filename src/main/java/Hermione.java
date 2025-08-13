@@ -5,11 +5,13 @@ public class Hermione {
     private static final String NAME = "Hermione";
     private static final String DIVIDER = "----------------------------------------";
     private static final String EXIT_COMMAND = "bye";
+
     private static final Scanner scanner = new Scanner(System.in);
+    private static final CommandProcessor commandProcessor = new CommandProcessor();
 
     public static void main(String[] args) {
         printMessage(getGreeting());
-        echo();
+        processUserInput();
         printMessage(getExit());
     }
 
@@ -20,27 +22,31 @@ public class Hermione {
     }
 
     private static String getGreeting() {
-        String greeting = "Hello! I'm %s\n".formatted(NAME)
-                        + "What can I do for you?";
-        return greeting;
+        return "Hello! I'm %s\n".formatted(NAME)
+            + "What can I do for you?";
     }
 
     private static String getExit() {
-        String exit = "Bye. Hope to see you soon!";
-        return exit;
+        return "Bye. Hope to see you soon!";
     }
 
-    private static void echo() {
-        // Get user input
+    private static void processUserInput() {
         while (true) {
-            System.out.print("> ");
-            String input = scanner.nextLine().trim();
-
-            // Exit if the user types EXIT_COMMAND
-            if (input.equalsIgnoreCase(EXIT_COMMAND)) {
+            String input = getUserInput();
+            if (input.equals(EXIT_COMMAND)) {
                 break;
             }
-            printMessage(input);
+            executeCommand(input);
         }
+    }
+
+    private static void executeCommand(String command) {
+        String result = commandProcessor.executeCommand(command);
+        printMessage(result);
+    }
+
+    private static String getUserInput() {
+        System.out.print("> ");
+        return scanner.nextLine().trim();
     }
 }
