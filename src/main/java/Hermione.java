@@ -36,13 +36,9 @@ public class Hermione {
             if (input.equals(EXIT_COMMAND)) {
                 break;
             }
-            executeCommand(input);
+            String result = commandProcessor.executeCommand(input);
+            printMessage(result);
         }
-    }
-
-    private static void executeCommand(String command) {
-        String result = commandProcessor.executeCommand(command);
-        printMessage(result);
     }
 
     private static String getUserInput() {
