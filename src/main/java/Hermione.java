@@ -7,7 +7,7 @@ public class Hermione {
     private static final String EXIT_COMMAND = "bye";
 
     private static final Scanner scanner = new Scanner(System.in);
-    private static final CommandProcessor commandProcessor = new CommandProcessor();
+    private static final InputProcessor INPUT_PROCESSOR = new InputProcessor();
 
     public static void main(String[] args) {
         printMessage(getGreeting());
@@ -36,7 +36,7 @@ public class Hermione {
             if (input.equals(EXIT_COMMAND)) {
                 break;
             }
-            String result = commandProcessor.executeCommand(input);
+            String result = INPUT_PROCESSOR.processInput(input);
             printMessage(result);
         }
     }
