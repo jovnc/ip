@@ -1,3 +1,5 @@
+import exceptions.TaskException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,21 +28,18 @@ public class InputProcessor {
         String command = message.split(" ")[0];
         String argument = message.substring(command.length()).trim();
 
-        switch (command) {
-            case LIST_COMMAND:
-                return handleListTasks();
-            case MARK_COMMAND:
-                return handleMarkTask(argument);
-            case UNMARK_COMMAND:
-                return handleUnmarkTask(argument);
-            case TODO_COMMAND:
-                return handleAddTodo(argument);
-            case DEADLINE_COMMAND:
-                return handleAddDeadline(argument);
-            case EVENT_COMMAND:
-                return handleAddEvent(argument);
-            default:
-                return INVALID_MESSAGE;
+        try {
+            return switch (command) {
+                case LIST_COMMAND -> handleListTasks();
+                case MARK_COMMAND -> handleMarkTask(argument);
+                case UNMARK_COMMAND -> handleUnmarkTask(argument);
+                case TODO_COMMAND -> handleAddTodo(argument);
+                case DEADLINE_COMMAND -> handleAddDeadline(argument);
+                case EVENT_COMMAND -> handleAddEvent(argument);
+                default -> INVALID_MESSAGE;
+            };
+        } catch (TaskException e) {
+            return e.getMessage();
         }
     }
 
@@ -57,46 +56,106 @@ public class InputProcessor {
         return "Here are the tasks in your list:" + tasks;
     }
 
-    private String handleAddTodo(String argument) {
+    private String handleAddTodo(String argument) throws TaskException{
+        if (argument.isBlank()) {
+            throw new TaskException("Todo Task format must be: todo {description}");
+        }
         Task newTask = new ToDo(argument);
         tasks.add(newTask);
         return getAddTaskString(newTask);
     }
 
-    private String handleAddDeadline(String argument) {
+    private String handleAddDeadline(String argument) throws TaskException{
+
+        if (!argument.contains(BY_FLAG)) {
+            throw new TaskException("Deadline Task must contain '/by' flag");
+        }
+
+        String[] split = argument.split(BY_FLAG);
+
+        if (split.length != 2) {
+            throw new TaskException("Deadline Task format must be: deadline {description} /by {deadline}");
+        }
+
         String description = argument.split(BY_FLAG)[0].trim();
         String by = argument.split(BY_FLAG)[1].trim();
+
+        if (description.isBlank()) {
+            throw new TaskException("Deadline Task description cannot be empty.");
+        }
+
+        if (by.isBlank()) {
+            throw new TaskException("Deadline Task deadline cannot be empty.");
+        }
 
         Task newTask = new Deadline(description, by);
         tasks.add(newTask);
         return getAddTaskString(newTask);
     }
 
-    private String handleAddEvent(String argument) {
+    private String handleAddEvent(String argument) throws TaskException{
         int fromIndex = argument.indexOf(FROM_FLAG);
         int toIndex = argument.indexOf(TO_FLAG);
+
+        if (fromIndex == -1 || toIndex == -1) {
+            throw new TaskException("Event Task must contain '/from' and '/to' flags.");
+        }
+
+        if (fromIndex >= toIndex) {
+            throw new TaskException("Event Task '/from' flag must come before '/to' flag");
+        }
 
         String description = argument.substring(0, fromIndex).trim();
         String from = argument.substring(fromIndex + FROM_FLAG.length(), toIndex).trim();
         String to = argument.substring(toIndex + TO_FLAG.length()).trim();
+
+        if (description.isBlank()) {
+            throw new TaskException("Event Task description cannot be empty.");
+        }
+
+        if (from.isBlank()) {
+            throw new TaskException("Event Task start time cannot be empty.");
+        }
+
+        if (to.isBlank()) {
+            throw new TaskException("Event Task end time cannot be empty.");
+        }
 
         Task newTask = new Event(description, from, to);
         tasks.add(newTask);
         return getAddTaskString(newTask);
     }
 
-    private String handleMarkTask(String argument) {
-        int taskId = Integer.parseInt(argument);
-        Task task = tasks.get(taskId - 1);
-        task.setCompleted(true);
-        return "Nice! I've marked this task as done:\n" + task.getTaskDescription();
+    private String handleMarkTask(String argument) throws TaskException{
+        if (argument.isBlank()) {
+            throw new TaskException("Task id cannot be empty");
+        }
+        try {
+            int taskId = Integer.parseInt(argument);
+            Task task = tasks.get(taskId - 1);
+            task.setCompleted(true);
+            return "Nice! I've marked this task as done:\n" + task.getTaskDescription();
+        } catch (NumberFormatException e) {
+            throw new TaskException("Invalid task id");
+        } catch (IndexOutOfBoundsException e) {
+            throw new TaskException("Task id does not exist");
+        }
     }
 
-    private String handleUnmarkTask(String argument) {
-        int taskId = Integer.parseInt(argument);
-        Task task = tasks.get(taskId - 1);
-        task.setCompleted(false);
-        return "OK, I've marked this task as not done yet:\n" + task.getTaskDescription();
+    private String handleUnmarkTask(String argument) throws TaskException {
+        if (argument.isBlank()) {
+            throw new TaskException("Task id cannot be empty");
+        }
+        try {
+            int taskId = Integer.parseInt(argument);
+            Task task = tasks.get(taskId - 1);
+            task.setCompleted(false);
+            return "OK, I've marked this task as not done yet:\n" + task.getTaskDescription();
+        } catch (NumberFormatException e) {
+            throw new TaskException("Invalid task id");
+        } catch (IndexOutOfBoundsException e) {
+            throw new TaskException("Task id does not exist");
+        }
     }
 
 }
