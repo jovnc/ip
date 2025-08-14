@@ -10,6 +10,7 @@ public class InputProcessor {
     private static final String TODO_COMMAND = "todo";
     private static final String DEADLINE_COMMAND = "deadline";
     private static final String EVENT_COMMAND = "event";
+    private static final String DELETE_COMMAND = "delete";
 
     private static final String BY_FLAG = "/by";
     private static final String FROM_FLAG = "/from";
@@ -36,6 +37,7 @@ public class InputProcessor {
                 case TODO_COMMAND -> handleAddTodo(argument);
                 case DEADLINE_COMMAND -> handleAddDeadline(argument);
                 case EVENT_COMMAND -> handleAddEvent(argument);
+                case DELETE_COMMAND -> handleDeleteTask(argument);
                 default -> INVALID_MESSAGE;
             };
         } catch (TaskException e) {
@@ -151,6 +153,23 @@ public class InputProcessor {
             Task task = tasks.get(taskId - 1);
             task.setCompleted(false);
             return "OK, I've marked this task as not done yet:\n" + task.getTaskDescription();
+        } catch (NumberFormatException e) {
+            throw new TaskException("Invalid task id");
+        } catch (IndexOutOfBoundsException e) {
+            throw new TaskException("Task id does not exist");
+        }
+    }
+
+    private String handleDeleteTask(String argument) throws TaskException {
+        if (argument.isBlank()) {
+            throw new TaskException("Task id cannot be empty");
+        }
+        try {
+            int taskId = Integer.parseInt(argument);
+            tasks.remove(taskId - 1);
+            return "Noted. I've removed this task:\n"
+                    + tasks.get(taskId - 1).getTaskDescription()
+                    + "\nNow you have %d tasks in the list.".formatted(tasks.size());
         } catch (NumberFormatException e) {
             throw new TaskException("Invalid task id");
         } catch (IndexOutOfBoundsException e) {
