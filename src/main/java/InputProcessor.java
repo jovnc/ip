@@ -3,14 +3,18 @@ import exceptions.TaskException;
 import java.util.ArrayList;
 import java.util.List;
 
+enum Command {
+    LIST,
+    MARK,
+    UNMARK,
+    TODO,
+    DEADLINE,
+    EVENT,
+    DELETE,
+    UNKNOWN
+}
+
 public class InputProcessor {
-    private static final String LIST_COMMAND = "list";
-    private static final String MARK_COMMAND = "mark";
-    private static final String UNMARK_COMMAND = "unmark";
-    private static final String TODO_COMMAND = "todo";
-    private static final String DEADLINE_COMMAND = "deadline";
-    private static final String EVENT_COMMAND = "event";
-    private static final String DELETE_COMMAND = "delete";
 
     private static final String BY_FLAG = "/by";
     private static final String FROM_FLAG = "/from";
@@ -24,20 +28,22 @@ public class InputProcessor {
         this.tasks = new ArrayList<>();
     }
 
+    /* Main processing function */
     public String processInput(String message) {
         message = message.trim();
-        String command = message.split(" ")[0];
-        String argument = message.substring(command.length()).trim();
+        String commandString = message.split(" ")[0];
+        Command command = getCommandFromString(commandString);
+        String argument = message.substring(commandString.length()).trim();
 
         try {
             return switch (command) {
-                case LIST_COMMAND -> handleListTasks();
-                case MARK_COMMAND -> handleMarkTask(argument);
-                case UNMARK_COMMAND -> handleUnmarkTask(argument);
-                case TODO_COMMAND -> handleAddTodo(argument);
-                case DEADLINE_COMMAND -> handleAddDeadline(argument);
-                case EVENT_COMMAND -> handleAddEvent(argument);
-                case DELETE_COMMAND -> handleDeleteTask(argument);
+                case LIST -> handleListTasks();
+                case MARK -> handleMarkTask(argument);
+                case UNMARK -> handleUnmarkTask(argument);
+                case TODO -> handleAddTodo(argument);
+                case DEADLINE -> handleAddDeadline(argument);
+                case EVENT -> handleAddEvent(argument);
+                case DELETE -> handleDeleteTask(argument);
                 default -> INVALID_MESSAGE;
             };
         } catch (TaskException e) {
@@ -45,12 +51,22 @@ public class InputProcessor {
         }
     }
 
+    /* Helper functions */
     private String getAddTaskString(Task task) {
         return "Got it. I've added this task:\n"
                 + task.getTaskDescription()
                 + "\nNow you have %d tasks in the list.".formatted(tasks.size());
     }
 
+    private Command getCommandFromString(String command) {
+        try {
+            return Command.valueOf(command.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            return Command.UNKNOWN;
+        }
+    }
+
+    /* Handler functions for the different commands */
     private String handleListTasks() {
         String tasks = this.tasks.stream()
                 .map(Task::toString)
