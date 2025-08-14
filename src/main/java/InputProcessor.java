@@ -86,7 +86,6 @@ public class InputProcessor {
     }
 
     private String handleMarkTask(String argument) {
-        System.out.println(argument);
         int taskId = Integer.parseInt(argument);
         Task task = tasks.get(taskId - 1);
         task.setCompleted(true);
