@@ -166,9 +166,9 @@ public class InputProcessor {
         }
         try {
             int taskId = Integer.parseInt(argument);
-            tasks.remove(taskId - 1);
+            Task removedTask = tasks.remove(taskId - 1);
             return "Noted. I've removed this task:\n"
-                    + tasks.get(taskId - 1).getTaskDescription()
+                    + removedTask.getTaskDescription()
                     + "\nNow you have %d tasks in the list.".formatted(tasks.size());
         } catch (NumberFormatException e) {
             throw new TaskException("Invalid task id");
