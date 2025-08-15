@@ -3,17 +3,6 @@ import exceptions.TaskException;
 import java.util.ArrayList;
 import java.util.List;
 
-enum Command {
-    LIST,
-    MARK,
-    UNMARK,
-    TODO,
-    DEADLINE,
-    EVENT,
-    DELETE,
-    UNKNOWN
-}
-
 public class InputProcessor {
 
     private static final String BY_FLAG = "/by";
