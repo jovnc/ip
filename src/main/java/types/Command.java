@@ -1,3 +1,5 @@
+package types;
+
 public enum Command {
     LIST,
     MARK,

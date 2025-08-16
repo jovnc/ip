@@ -1,6 +1,9 @@
-import exceptions.TaskException;
+package ui;
 
-import java.util.List;
+import exceptions.TaskException;
+import storage.CsvTaskStorage;
+import tasks.*;
+import types.Command;
 
 public class InputProcessor {
 
@@ -59,7 +62,7 @@ public class InputProcessor {
 
     private String handleAddTodo(String argument) throws TaskException{
         if (argument.isBlank()) {
-            throw new TaskException("Todo Task format must be: todo {description}");
+            throw new TaskException("Todo tasks.Task format must be: todo {description}");
         }
 
         Task newTask = new ToDo(argument, false);
@@ -71,24 +74,24 @@ public class InputProcessor {
     private String handleAddDeadline(String argument) throws TaskException{
 
         if (!argument.contains(BY_FLAG)) {
-            throw new TaskException("Deadline Task must contain '/by' flag");
+            throw new TaskException("tasks.Deadline tasks.Task must contain '/by' flag");
         }
 
         String[] split = argument.split(BY_FLAG);
 
         if (split.length != 2) {
-            throw new TaskException("Deadline Task format must be: deadline {description} /by {deadline}");
+            throw new TaskException("tasks.Deadline tasks.Task format must be: deadline {description} /by {deadline}");
         }
 
         String description = argument.split(BY_FLAG)[0].trim();
         String by = argument.split(BY_FLAG)[1].trim();
 
         if (description.isBlank()) {
-            throw new TaskException("Deadline Task description cannot be empty.");
+            throw new TaskException("tasks.Deadline tasks.Task description cannot be empty.");
         }
 
         if (by.isBlank()) {
-            throw new TaskException("Deadline Task deadline cannot be empty.");
+            throw new TaskException("tasks.Deadline tasks.Task deadline cannot be empty.");
         }
 
         Task newTask = new Deadline(description, false, by);
@@ -102,11 +105,11 @@ public class InputProcessor {
         int toIndex = argument.indexOf(TO_FLAG);
 
         if (fromIndex == -1 || toIndex == -1) {
-            throw new TaskException("Event Task must contain '/from' and '/to' flags.");
+            throw new TaskException("tasks.Event tasks.Task must contain '/from' and '/to' flags.");
         }
 
         if (fromIndex >= toIndex) {
-            throw new TaskException("Event Task '/from' flag must come before '/to' flag");
+            throw new TaskException("tasks.Event tasks.Task '/from' flag must come before '/to' flag");
         }
 
         String description = argument.substring(0, fromIndex).trim();
@@ -114,15 +117,15 @@ public class InputProcessor {
         String to = argument.substring(toIndex + TO_FLAG.length()).trim();
 
         if (description.isBlank()) {
-            throw new TaskException("Event Task description cannot be empty.");
+            throw new TaskException("tasks.Event tasks.Task description cannot be empty.");
         }
 
         if (from.isBlank()) {
-            throw new TaskException("Event Task start time cannot be empty.");
+            throw new TaskException("tasks.Event tasks.Task start time cannot be empty.");
         }
 
         if (to.isBlank()) {
-            throw new TaskException("Event Task end time cannot be empty.");
+            throw new TaskException("tasks.Event tasks.Task end time cannot be empty.");
         }
 
         Task newTask = new Event(description, false, from, to);
@@ -133,7 +136,7 @@ public class InputProcessor {
 
     private String handleMarkTask(String argument) throws TaskException{
         if (argument.isBlank()) {
-            throw new TaskException("Task id cannot be empty");
+            throw new TaskException("tasks.Task id cannot be empty");
         }
         try {
             TaskList tasks = storage.getTasks();
@@ -145,13 +148,13 @@ public class InputProcessor {
         } catch (NumberFormatException e) {
             throw new TaskException("Invalid task id");
         } catch (IndexOutOfBoundsException e) {
-            throw new TaskException("Task id does not exist");
+            throw new TaskException("tasks.Task id does not exist");
         }
     }
 
     private String handleUnmarkTask(String argument) throws TaskException {
         if (argument.isBlank()) {
-            throw new TaskException("Task id cannot be empty");
+            throw new TaskException("tasks.Task id cannot be empty");
         }
         try {
             TaskList tasks = storage.getTasks();
@@ -163,13 +166,13 @@ public class InputProcessor {
         } catch (NumberFormatException e) {
             throw new TaskException("Invalid task id");
         } catch (IndexOutOfBoundsException e) {
-            throw new TaskException("Task id does not exist");
+            throw new TaskException("tasks.Task id does not exist");
         }
     }
 
     private String handleDeleteTask(String argument) throws TaskException {
         if (argument.isBlank()) {
-            throw new TaskException("Task id cannot be empty");
+            throw new TaskException("tasks.Task id cannot be empty");
         }
         try {
             int taskId = Integer.parseInt(argument);
@@ -182,7 +185,7 @@ public class InputProcessor {
         } catch (NumberFormatException e) {
             throw new TaskException("Invalid task id");
         } catch (IndexOutOfBoundsException e) {
-            throw new TaskException("Task id does not exist");
+            throw new TaskException("tasks.Task id does not exist");
         }
     }
 

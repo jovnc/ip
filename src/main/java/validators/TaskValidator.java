@@ -1,3 +1,5 @@
+package validators;
+
 public class TaskValidator {
 
     public void validateFields(String[] fields) {
@@ -19,7 +21,7 @@ public class TaskValidator {
     /* Helper functions to validate based on a task type */
     private void validateTodoFields(String[] fields) {
         if (fields.length != 3) {
-            throw new IllegalArgumentException("Invalid number of fields for Todo Task");
+            throw new IllegalArgumentException("Invalid number of fields for Todo tasks.Task");
         }
 
         String isCompleted = fields[1];
@@ -31,7 +33,7 @@ public class TaskValidator {
 
     private void validateDeadlineFields(String[] fields) {
         if (fields.length != 4) {
-            throw new IllegalArgumentException("Invalid number of fields for Deadline Task");
+            throw new IllegalArgumentException("Invalid number of fields for tasks.Deadline tasks.Task");
         }
 
         String isCompleted = fields[1];
@@ -46,7 +48,7 @@ public class TaskValidator {
 
     private void validateEventFields(String[] fields) {
         if (fields.length != 5) {
-            throw new IllegalArgumentException("Invalid number of fields for Event Task");
+            throw new IllegalArgumentException("Invalid number of fields for tasks.Event tasks.Task");
         }
 
         String isCompleted = fields[1];
