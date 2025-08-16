@@ -17,14 +17,9 @@ public class Event extends Task{
     }
 
     @Override
-    public String getTaskDescription() {
-        return "[E]"
-                + super.getTaskDescription()
-                + " (from: %s to: %s)".formatted(this.from, this.to);
-    }
-
-    @Override
     public String toString() {
-        return "%d. %s".formatted(super.getId(), this.getTaskDescription());
+        return "[E]"
+                + super.toString()
+                + " (from: %s to: %s)".formatted(this.from, this.to);
     }
 }

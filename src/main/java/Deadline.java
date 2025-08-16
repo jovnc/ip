@@ -12,14 +12,9 @@ public class Deadline extends Task {
     }
 
     @Override
-    public String getTaskDescription() {
-        return "[D]"
-                + super.getTaskDescription()
-                + " (by: %s)".formatted(this.by);
-    }
-
-    @Override
     public String toString() {
-        return "%d. %s".formatted(super.getId(), this.getTaskDescription());
+        return "[D]"
+                + super.toString()
+                + " (by: %s)".formatted(this.by);
     }
 }
