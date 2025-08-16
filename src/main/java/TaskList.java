@@ -22,6 +22,10 @@ public class TaskList {
         return this.tasks.get(index);
     }
 
+    public List<Task> getTasks() {
+        return this.tasks;
+    }
+
     public int getSize() {
         return this.tasks.size();
     }

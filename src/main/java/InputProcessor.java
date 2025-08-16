@@ -1,6 +1,5 @@
 import exceptions.TaskException;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class InputProcessor {
@@ -11,11 +10,7 @@ public class InputProcessor {
 
     private static final String INVALID_MESSAGE = "Invalid command. Please try again.";
 
-    private final List<Task> tasks;
-
-    public InputProcessor() {
-        this.tasks = new ArrayList<>();
-    }
+    private static final CsvTaskStorage storage = new CsvTaskStorage("data/tasks.csv");
 
     /* Main processing function */
     public String processInput(String message) {
@@ -42,9 +37,10 @@ public class InputProcessor {
 
     /* Helper functions */
     private String getAddTaskString(Task task) {
+        TaskList tasks = storage.getTasks();
         return "Got it. I've added this task:\n"
-                + task.getTaskDescription()
-                + "\nNow you have %d tasks in the list.".formatted(tasks.size());
+                + task.toString()
+                + "\nNow you have %d tasks in the list.".formatted(tasks.getSize());
     }
 
     private Command getCommandFromString(String command) {
@@ -57,18 +53,18 @@ public class InputProcessor {
 
     /* Handler functions for the different commands */
     private String handleListTasks() {
-        String tasks = this.tasks.stream()
-                .map(Task::toString)
-                .reduce("", (acc, item) -> acc + "\n" + item);
-        return "Here are the tasks in your list:" + tasks;
+        TaskList tasks = storage.getTasks();
+        return "Here are the tasks in your list:\n" + tasks.toString();
     }
 
     private String handleAddTodo(String argument) throws TaskException{
         if (argument.isBlank()) {
             throw new TaskException("Todo Task format must be: todo {description}");
         }
-        Task newTask = new ToDo(argument);
-        tasks.add(newTask);
+
+        Task newTask = new ToDo(argument, false);
+        storage.addTask(newTask);
+
         return getAddTaskString(newTask);
     }
 
@@ -95,8 +91,9 @@ public class InputProcessor {
             throw new TaskException("Deadline Task deadline cannot be empty.");
         }
 
-        Task newTask = new Deadline(description, by);
-        tasks.add(newTask);
+        Task newTask = new Deadline(description, false, by);
+        storage.addTask(newTask);
+
         return getAddTaskString(newTask);
     }
 
@@ -128,8 +125,9 @@ public class InputProcessor {
             throw new TaskException("Event Task end time cannot be empty.");
         }
 
-        Task newTask = new Event(description, from, to);
-        tasks.add(newTask);
+        Task newTask = new Event(description, false, from, to);
+        storage.addTask(newTask);
+
         return getAddTaskString(newTask);
     }
 
@@ -138,10 +136,12 @@ public class InputProcessor {
             throw new TaskException("Task id cannot be empty");
         }
         try {
+            TaskList tasks = storage.getTasks();
             int taskId = Integer.parseInt(argument);
-            Task task = tasks.get(taskId - 1);
-            task.setCompleted(true);
-            return "Nice! I've marked this task as done:\n" + task.getTaskDescription();
+            Task task = tasks.getTask(taskId - 1);
+            storage.setTaskCompletion(task, true);
+
+            return "Nice! I've marked this task as done:\n" + task.toString();
         } catch (NumberFormatException e) {
             throw new TaskException("Invalid task id");
         } catch (IndexOutOfBoundsException e) {
@@ -154,10 +154,12 @@ public class InputProcessor {
             throw new TaskException("Task id cannot be empty");
         }
         try {
+            TaskList tasks = storage.getTasks();
             int taskId = Integer.parseInt(argument);
-            Task task = tasks.get(taskId - 1);
-            task.setCompleted(false);
-            return "OK, I've marked this task as not done yet:\n" + task.getTaskDescription();
+            Task task = tasks.getTask(taskId - 1);
+            storage.setTaskCompletion(task, false);
+
+            return "OK, I've marked this task as not done yet:\n" + task.toString();
         } catch (NumberFormatException e) {
             throw new TaskException("Invalid task id");
         } catch (IndexOutOfBoundsException e) {
@@ -171,10 +173,12 @@ public class InputProcessor {
         }
         try {
             int taskId = Integer.parseInt(argument);
-            Task removedTask = tasks.remove(taskId - 1);
+            Task removedTask = storage.deleteTask(taskId - 1);
+
+            TaskList tasks = storage.getTasks();
             return "Noted. I've removed this task:\n"
-                    + removedTask.getTaskDescription()
-                    + "\nNow you have %d tasks in the list.".formatted(tasks.size());
+                    + removedTask.toString()
+                    + "\nNow you have %d tasks in the list.".formatted(tasks.getSize());
         } catch (NumberFormatException e) {
             throw new TaskException("Invalid task id");
         } catch (IndexOutOfBoundsException e) {
