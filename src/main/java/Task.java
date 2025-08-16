@@ -4,9 +4,9 @@ public abstract class Task {
     private boolean isCompleted;
     private static int idCounter = 1;
 
-    public Task(String name) {
+    public Task(String name, boolean isCompleted) {
         this.name = name;
-        this.isCompleted = false;
+        this.isCompleted = isCompleted;
         this.id = idCounter;
         idCounter++;
     }
