@@ -11,6 +11,18 @@ public abstract class Task {
         idCounter++;
     }
 
+    public int getId() {
+        return this.id;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public boolean isCompleted() {
+        return this.isCompleted;
+    }
+
     public void setCompleted(boolean isCompleted) {
         this.isCompleted = isCompleted;
     }
@@ -20,7 +32,4 @@ public abstract class Task {
         return "%s %s".formatted(status, this.name);
     }
 
-    public int getId() {
-        return this.id;
-    }
 }
