@@ -18,7 +18,7 @@ public class DateUtils {
     }
 
     public static String formatDate(LocalDateTime date) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy HHmm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd yyyy HH:mm");
         return date.format(formatter);
     }
 }
