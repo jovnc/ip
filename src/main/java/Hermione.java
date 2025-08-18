@@ -1,3 +1,5 @@
+import ui.InputProcessor;
+
 import java.util.Scanner;
 
 public class Hermione {
