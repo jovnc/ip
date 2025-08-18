@@ -7,7 +7,7 @@ import java.util.List;
 
 public class FileUtils {
 
-    public void ensureFileExists(Path filePath) {
+    public static void ensureFileExists(Path filePath) {
         try {
             if (filePath.getParent() != null) {
                 Files.createDirectories(filePath.getParent());
@@ -25,7 +25,7 @@ public class FileUtils {
         }
     }
 
-    public List<String> readAllLines(Path filePath) {
+    public static List<String> readAllLines(Path filePath) {
         try {
             ensureFileExists(filePath);
             return Files.readAllLines(filePath);
@@ -35,7 +35,7 @@ public class FileUtils {
         }
     }
 
-    public void writeAllLines(Path filePath, List<String> lines) {
+    public static void writeAllLines(Path filePath, List<String> lines) {
         try {
             ensureFileExists(filePath);
             Files.write(filePath, lines);

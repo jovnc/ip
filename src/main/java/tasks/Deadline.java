@@ -1,15 +1,19 @@
 package tasks;
 
+import utils.DateUtils;
+
+import java.time.LocalDateTime;
+
 public class Deadline extends Task {
 
-    private final String by;
+    private final LocalDateTime by;
 
-    public Deadline(String description, boolean isCompleted, String by) {
+    public Deadline(String description, boolean isCompleted, LocalDateTime by) {
         super(description, isCompleted);
         this.by = by;
     }
 
-    public String getBy() {
+    public LocalDateTime getBy() {
         return this.by;
     }
 
@@ -17,6 +21,6 @@ public class Deadline extends Task {
     public String toString() {
         return "[D]"
                 + super.toString()
-                + " (by: %s)".formatted(this.by);
+                + " (by: %s)".formatted(DateUtils.formatDate(this.by));
     }
 }

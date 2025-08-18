@@ -1,9 +1,13 @@
 package ui;
 
+import exceptions.DateUtilsException;
 import exceptions.TaskException;
 import storage.CsvTaskStorage;
 import tasks.*;
 import types.Command;
+import utils.DateUtils;
+
+import java.time.LocalDateTime;
 
 public class InputProcessor {
 
@@ -33,8 +37,10 @@ public class InputProcessor {
                 case DELETE -> handleDeleteTask(argument);
                 default -> INVALID_MESSAGE;
             };
-        } catch (TaskException e) {
+        } catch (TaskException | DateUtilsException e) {
             return e.getMessage();
+        } catch (Exception e) {
+            return "An unexpected error occurred. Please try again.";
         }
     }
 
@@ -94,7 +100,9 @@ public class InputProcessor {
             throw new TaskException("tasks.Deadline tasks.Task deadline cannot be empty.");
         }
 
-        Task newTask = new Deadline(description, false, by);
+        LocalDateTime parsedBy = DateUtils.parseDateString(by);
+
+        Task newTask = new Deadline(description, false, parsedBy);
         storage.addTask(newTask);
 
         return getAddTaskString(newTask);
@@ -128,7 +136,10 @@ public class InputProcessor {
             throw new TaskException("tasks.Event tasks.Task end time cannot be empty.");
         }
 
-        Task newTask = new Event(description, false, from, to);
+        LocalDateTime parsedFrom = DateUtils.parseDateString(from);
+        LocalDateTime parsedTo = DateUtils.parseDateString(to);
+
+        Task newTask = new Event(description, false, parsedFrom, parsedTo);
         storage.addTask(newTask);
 
         return getAddTaskString(newTask);

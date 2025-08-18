@@ -13,7 +13,6 @@ import java.util.stream.Collectors;
 public class CsvTaskStorage {
 
     private final Path filePath;
-    private static final FileUtils fileUtils = new FileUtils();
     private static final TaskSerializer taskSerializer = new TaskSerializer();
     private TaskList tasks;
 
@@ -27,7 +26,7 @@ public class CsvTaskStorage {
     }
 
     public TaskList loadTasks() {
-        List<String> lines = fileUtils.readAllLines(this.filePath);
+        List<String> lines = FileUtils.readAllLines(this.filePath);
         List<Task> tasks = lines.stream()
                 .map(this::parseTaskSafely)
                 .filter(Objects::nonNull)
@@ -40,7 +39,7 @@ public class CsvTaskStorage {
                                 .stream()
                                 .map(taskSerializer::serialize)
                                 .toList();
-        fileUtils.writeAllLines(this.filePath, lines);
+        FileUtils.writeAllLines(this.filePath, lines);
         this.tasks = loadTasks();
     }
 

@@ -4,7 +4,10 @@ import tasks.Deadline;
 import tasks.Event;
 import tasks.Task;
 import tasks.ToDo;
+import utils.DateUtils;
 import validators.TaskValidator;
+
+import java.time.LocalDateTime;
 
 public class TaskSerializer {
 
@@ -74,12 +77,15 @@ public class TaskSerializer {
 
     private Deadline createDeadlineTask(String description, boolean isCompleted, String[] fields) {
         String by = fields.length >= 4 ? fields[3] : "";
-        return new Deadline(description, isCompleted, by);
+        LocalDateTime parsedBy = DateUtils.parseDateString(by);
+        return new Deadline(description, isCompleted, parsedBy);
     }
 
     private Event createEventTask(String description, boolean isCompleted, String[] fields) {
         String from = fields.length >= 4 ? fields[3] : "";
         String to = fields.length >= 5 ? fields[4] : "";
-        return new Event(description, isCompleted, from, to);
+        LocalDateTime parsedFrom = DateUtils.parseDateString(from);
+        LocalDateTime parsedTo = DateUtils.parseDateString(to);
+        return new Event(description, isCompleted, parsedFrom, parsedTo);
     }
 }
