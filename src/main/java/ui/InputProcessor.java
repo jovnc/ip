@@ -2,9 +2,9 @@ package ui;
 
 import exceptions.DateUtilsException;
 import exceptions.TaskException;
-import storage.CsvTaskStorage;
+import storage.TaskStorage;
 import tasks.*;
-import types.Command;
+import commands.Command;
 import utils.DateUtils;
 
 import java.time.LocalDateTime;
@@ -17,7 +17,11 @@ public class InputProcessor {
 
     private static final String INVALID_MESSAGE = "Invalid command. Please try again.";
 
-    private static final CsvTaskStorage storage = new CsvTaskStorage("data/tasks.csv");
+    private final TaskStorage storage;
+
+    public InputProcessor(TaskStorage storage) {
+        this.storage = storage;
+    }
 
     /* Main processing function */
     public String processInput(String message) {

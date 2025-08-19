@@ -1,4 +1,4 @@
-package types;
+package commands;
 
 public enum Command {
     LIST,
