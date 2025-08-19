@@ -19,64 +19,51 @@ Invalid command. Please try again.
 [ERROR] Todo tasks.Task format must be: todo {description}
 ----------------------------------------
 > ----------------------------------------
-Got it. I've added this task:
-[D][ ] return book (by: Sunday)
-Now you have 3 tasks in the list.
+[DATE UTILS ERROR] Failed to parse date: 2025-03-19T16:00. Make sure to follow the format: d/M/yyyy HHmm
 ----------------------------------------
 > ----------------------------------------
 [ERROR] tasks.Deadline tasks.Task format must be: deadline {description} /by {deadline}
 ----------------------------------------
 > ----------------------------------------
-Got it. I've added this task:
-[E][ ] project meeting (from: Mon 2pm to: 4pm)
-Now you have 4 tasks in the list.
+[DATE UTILS ERROR] Failed to parse date: 2025-03-19T16:00. Make sure to follow the format: d/M/yyyy HHmm
 ----------------------------------------
 > ----------------------------------------
 [ERROR] tasks.Event tasks.Task description cannot be empty.
 ----------------------------------------
 > ----------------------------------------
-Nice! I've marked this task as done:
-[T][X] read book
+[DATE UTILS ERROR] Failed to parse date: 2025-03-19T16:00. Make sure to follow the format: d/M/yyyy HHmm
 ----------------------------------------
 > ----------------------------------------
-Nice! I've marked this task as done:
-[T][X] swimming
+[DATE UTILS ERROR] Failed to parse date: 2025-03-19T16:00. Make sure to follow the format: d/M/yyyy HHmm
 ----------------------------------------
 > ----------------------------------------
-OK, I've marked this task as not done yet:
-[T][ ] swimming
+[DATE UTILS ERROR] Failed to parse date: 2025-03-19T16:00. Make sure to follow the format: d/M/yyyy HHmm
 ----------------------------------------
 > ----------------------------------------
 Here are the tasks in your list:
 1. [T][X] read book
 2. [T][ ] swimming
-3. [D][ ] return book (by: Sunday)
-4. [E][ ] project meeting (from: Mon 2pm to: 4pm)
+3. [D][ ] return book (by: Mar 19 2025 16:00)
+4. [E][ ] project meeting (from: Mar 19 2025 16:00 to: Mar 19 2025 18:00)
 ----------------------------------------
 > ----------------------------------------
-Noted. I've removed this task:
-[T][X] read book
-Now you have 3 tasks in the list.
+[DATE UTILS ERROR] Failed to parse date: 2025-03-19T16:00. Make sure to follow the format: d/M/yyyy HHmm
 ----------------------------------------
 > ----------------------------------------
 Here are the tasks in your list:
 1. [T][ ] swimming
-2. [D][ ] return book (by: Sunday)
-3. [E][ ] project meeting (from: Mon 2pm to: 4pm)
+2. [D][ ] return book (by: Mar 19 2025 16:00)
+3. [E][ ] project meeting (from: Mar 19 2025 16:00 to: Mar 19 2025 18:00)
+----------------------------------------
+> ----------------------------------------
+[DATE UTILS ERROR] Failed to parse date: 2025-03-19T16:00. Make sure to follow the format: d/M/yyyy HHmm
+----------------------------------------
+> ----------------------------------------
+[DATE UTILS ERROR] Failed to parse date: 2025-03-19T16:00. Make sure to follow the format: d/M/yyyy HHmm
 ----------------------------------------
 > ----------------------------------------
 Noted. I've removed this task:
-[T][ ] swimming
-Now you have 2 tasks in the list.
-----------------------------------------
-> ----------------------------------------
-Noted. I've removed this task:
-[D][ ] return book (by: Sunday)
-Now you have 1 tasks in the list.
-----------------------------------------
-> ----------------------------------------
-Noted. I've removed this task:
-[E][ ] project meeting (from: Mon 2pm to: 4pm)
+[E][ ] project meeting (from: Mar 19 2025 16:00 to: Mar 19 2025 18:00)
 Now you have 0 tasks in the list.
 ----------------------------------------
 > ----------------------------------------
