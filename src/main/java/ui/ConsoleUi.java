@@ -1,7 +1,5 @@
 package ui;
 
-import storage.CsvTaskStorage;
-
 import java.util.Scanner;
 
 public class ConsoleUi {
@@ -27,7 +25,7 @@ public class ConsoleUi {
             if (input.equals(EXIT_COMMAND)) {
                 break;
             }
-            String result = inputProcessor.processInput(input);
+            String result = inputProcessor.process(input);
             printMessage(result);
         }
 

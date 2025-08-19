@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class CsvTaskStorage implements TaskStorage{
+public class CsvTaskStorage implements TaskStorage {
 
     private final Path filePath;
     private static final TaskSerializer taskSerializer = new TaskSerializer();
