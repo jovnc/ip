@@ -15,7 +15,6 @@ public class TaskSerializer {
 
     public Task deserialize(String line) {
         String[] fields = line.split(",");
-        validator.validateFields(fields);
 
         String taskType = fields[0];
         boolean isCompleted = parseBinaryToBoolean(fields[1]);
