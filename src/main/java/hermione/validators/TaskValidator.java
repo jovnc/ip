@@ -1,6 +1,8 @@
 package hermione.validators;
 
+import hermione.exceptions.DateUtilsException;
 import hermione.exceptions.TaskValidationException;
+import hermione.utils.DateUtils;
 
 public class TaskValidator {
 
@@ -83,17 +85,32 @@ public class TaskValidator {
         if (by.isBlank()) {
             throw new TaskValidationException("By cannot be empty");
         }
+        try {
+            DateUtils.parseDateString(by);
+        } catch (DateUtilsException e) {
+            throw new TaskValidationException("Invalid date format for By field: " + by);
+        }
     }
 
     private void validateFrom(String from) {
         if (from.isBlank()) {
             throw new TaskValidationException("From cannot be empty");
         }
+        try {
+            DateUtils.parseDateString(from);
+        } catch (DateUtilsException e) {
+            throw new TaskValidationException("Invalid date format for From field: " + from);
+        }
     }
 
     private void validateTo(String to) {
         if (to.isBlank()) {
             throw new TaskValidationException("To cannot be empty");
+        }
+        try {
+            DateUtils.parseDateString(to);
+        } catch (DateUtilsException e) {
+            throw new TaskValidationException("Invalid date format for To field: " + to);
         }
     }
 
