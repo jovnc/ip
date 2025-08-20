@@ -1,6 +1,6 @@
 package commands;
 
-import exceptions.TaskException;
+import exceptions.TaskValidationException;
 import storage.TaskStorage;
 import tasks.Event;
 import tasks.Task;
@@ -24,11 +24,11 @@ public class EventCommand extends Command{
         int toIndex = argument.indexOf(TO_FLAG);
 
         if (fromIndex == -1 || toIndex == -1) {
-            throw new TaskException("Event Task must contain '/from' and '/to' flags.");
+            throw new TaskValidationException("Event Task must contain '/from' and '/to' flags.");
         }
 
         if (fromIndex >= toIndex) {
-            throw new TaskException("Event Task '/from' flag must come before '/to' flag");
+            throw new TaskValidationException("Event Task '/from' flag must come before '/to' flag");
         }
 
         String description = argument.substring(0, fromIndex).trim();
@@ -36,15 +36,15 @@ public class EventCommand extends Command{
         String to = argument.substring(toIndex + TO_FLAG.length()).trim();
 
         if (description.isBlank()) {
-            throw new TaskException("Event Task description cannot be empty.");
+            throw new TaskValidationException("Event Task description cannot be empty.");
         }
 
         if (from.isBlank()) {
-            throw new TaskException("Event Task start time cannot be empty.");
+            throw new TaskValidationException("Event Task start time cannot be empty.");
         }
 
         if (to.isBlank()) {
-            throw new TaskException("Event Task end time cannot be empty.");
+            throw new TaskValidationException("Event Task end time cannot be empty.");
         }
 
         LocalDateTime parsedFrom = DateUtils.parseDateString(from);

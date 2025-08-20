@@ -1,6 +1,6 @@
 package commands;
 
-import exceptions.TaskException;
+import exceptions.TaskValidationException;
 import storage.TaskStorage;
 import tasks.Task;
 import tasks.ToDo;
@@ -14,7 +14,7 @@ public class ToDoCommand extends Command{
     @Override
     public String execute() {
         if (argument.isBlank()) {
-            throw new TaskException("Todo Task format must be: todo {description}");
+            throw new TaskValidationException("Todo Task format must be: todo {description}");
         }
 
         Task newTask = new ToDo(argument, false);

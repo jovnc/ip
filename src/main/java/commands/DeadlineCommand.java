@@ -1,6 +1,6 @@
 package commands;
 
-import exceptions.TaskException;
+import exceptions.TaskValidationException;
 import storage.TaskStorage;
 import tasks.Deadline;
 import tasks.Task;
@@ -20,24 +20,24 @@ public class DeadlineCommand extends Command {
     @Override
     public String execute() {
         if (!argument.contains(BY_FLAG)) {
-            throw new TaskException("Deadline Task must contain '/by' flag");
+            throw new TaskValidationException("Deadline Task must contain '/by' flag");
         }
 
         String[] split = argument.split(BY_FLAG);
 
         if (split.length != 2) {
-            throw new TaskException("Deadline Task format must be: deadline {description} /by {deadline}");
+            throw new TaskValidationException("Deadline Task format must be: deadline {description} /by {deadline}");
         }
 
         String description = argument.split(BY_FLAG)[0].trim();
         String by = argument.split(BY_FLAG)[1].trim();
 
         if (description.isBlank()) {
-            throw new TaskException("Deadline Task description cannot be empty.");
+            throw new TaskValidationException("Deadline Task description cannot be empty.");
         }
 
         if (by.isBlank()) {
-            throw new TaskException("Deadline Task deadline cannot be empty.");
+            throw new TaskValidationException("Deadline Task deadline cannot be empty.");
         }
 
         LocalDateTime parsedBy = DateUtils.parseDateString(by);

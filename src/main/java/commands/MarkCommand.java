@@ -1,6 +1,6 @@
 package commands;
 
-import exceptions.TaskException;
+import exceptions.TaskValidationException;
 import storage.TaskStorage;
 import tasks.Task;
 import tasks.TaskList;
@@ -13,7 +13,7 @@ public class MarkCommand extends Command {
     @Override
     public String execute() {
         if (argument.isBlank()) {
-            throw new TaskException("Task id cannot be empty");
+            throw new TaskValidationException("Task id cannot be empty");
         }
         try {
             TaskList tasks = storage.getTasks();
@@ -23,9 +23,9 @@ public class MarkCommand extends Command {
 
             return "Nice! I've marked this task as done:\n" + task.toString();
         } catch (NumberFormatException e) {
-            throw new TaskException("Invalid task id");
+            throw new TaskValidationException("Invalid task id");
         } catch (IndexOutOfBoundsException e) {
-            throw new TaskException("Task id does not exist");
+            throw new TaskValidationException("Task id does not exist");
         }
     }
 }

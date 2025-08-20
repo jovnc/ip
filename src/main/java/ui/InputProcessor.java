@@ -1,6 +1,9 @@
 package ui;
 
 import commands.Command;
+import exceptions.DateUtilsException;
+import exceptions.InvalidCommandException;
+import exceptions.TaskValidationException;
 import parsers.CommandParser;
 import storage.TaskStorage;
 
@@ -19,8 +22,10 @@ public class InputProcessor {
         try {
             Command command = CommandParser.parse(commandString, argument, storage);
             return command.execute();
-        } catch (Exception e) {
+        } catch (DateUtilsException | InvalidCommandException | TaskValidationException e) {
             return e.getMessage();
+        } catch (Exception e) {
+            return "An unexpected error occurred. Please try again.";
         }
     }
 
