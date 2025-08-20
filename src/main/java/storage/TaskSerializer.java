@@ -39,9 +39,9 @@ public class TaskSerializer {
 
     private String buildTypeSpecificFields(Task task) {
         if (task instanceof Deadline deadline) {
-            return "," + deadline.getBy();
+            return "," + DateUtils.formatDate(deadline.getBy());
         } else if (task instanceof Event event) {
-            return "," + event.getFrom() + "," + event.getTo();
+            return "," + DateUtils.formatDate(event.getFrom()) + "," + DateUtils.formatDate(event.getTo());
         }
         return "";
     }
@@ -77,15 +77,15 @@ public class TaskSerializer {
 
     private Deadline createDeadlineTask(String description, boolean isCompleted, String[] fields) {
         String by = fields.length >= 4 ? fields[3] : "";
-        LocalDateTime parsedBy = DateUtils.parseDateString(by);
+        LocalDateTime parsedBy = DateUtils.undoFormatDate(by);
         return new Deadline(description, isCompleted, parsedBy);
     }
 
     private Event createEventTask(String description, boolean isCompleted, String[] fields) {
         String from = fields.length >= 4 ? fields[3] : "";
         String to = fields.length >= 5 ? fields[4] : "";
-        LocalDateTime parsedFrom = DateUtils.parseDateString(from);
-        LocalDateTime parsedTo = DateUtils.parseDateString(to);
+        LocalDateTime parsedFrom = DateUtils.undoFormatDate(from);
+        LocalDateTime parsedTo = DateUtils.undoFormatDate(to);
         return new Event(description, isCompleted, parsedFrom, parsedTo);
     }
 }

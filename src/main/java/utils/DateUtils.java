@@ -21,4 +21,9 @@ public class DateUtils {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd yyyy HH:mm");
         return date.format(formatter);
     }
+
+    public static LocalDateTime undoFormatDate(String dateString) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd yyyy HH:mm");
+        return LocalDateTime.parse(dateString, formatter);
+    }
 }
