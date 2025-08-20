@@ -13,7 +13,8 @@ public class CommandParser {
             case "mark" -> new MarkCommand(storage, argument);
             case "unmark" -> new UnmarkCommand(storage, argument);
             case "list" -> new ListCommand(storage, argument);
-            default -> new InvalidCommand(storage, argument);
+            case "bye" -> new ExitCommand(argument);
+            default -> new InvalidCommand(argument);
         };
     }
 }

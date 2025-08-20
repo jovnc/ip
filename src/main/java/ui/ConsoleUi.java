@@ -5,11 +5,12 @@ import java.util.Scanner;
 public class ConsoleUi {
 
     private static final String DIVIDER = "----------------------------------------";
-    private static final String EXIT_COMMAND = "bye";
 
     private final Scanner scanner;
     private final InputProcessor inputProcessor;
     private final String name;
+
+    private static boolean isRunning = true;
 
     public ConsoleUi(String name, InputProcessor inputProcessor) {
         this.scanner = new Scanner(System.in);
@@ -17,19 +18,18 @@ public class ConsoleUi {
         this.name = name;
     }
 
+    public static void exit() {
+        isRunning = false;
+    }
+
     public void start() {
         printMessage(getGreeting());
 
-        while (true) {
+        while (isRunning) {
             String input = getUserInput();
-            if (input.equals(EXIT_COMMAND)) {
-                break;
-            }
             String result = inputProcessor.process(input);
             printMessage(result);
         }
-
-        printMessage(getExit());
     }
 
     private void printMessage(String message) {
@@ -40,10 +40,6 @@ public class ConsoleUi {
 
     private String getGreeting() {
         return "Hello! I'm %s\nWhat can I do for you?".formatted(name);
-    }
-
-    private String getExit() {
-        return "Bye. Hope to see you soon!";
     }
 
     private String getUserInput() {
