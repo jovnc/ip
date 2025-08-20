@@ -29,7 +29,7 @@ public class DateUtilsTest {
     public void formatDate_validLocalDateTime_returnsString() {
         LocalDateTime date = LocalDateTime.of(2021, 1, 1, 12, 0);
         String result = DateUtils.formatDate(date);
-        String expected = "2021-01-01 12:00:00";
+        String expected = "Jan 01 2021 12:00";
         Assertions.assertEquals(expected, result);
     }
 
