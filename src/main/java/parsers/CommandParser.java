@@ -1,6 +1,7 @@
 package parsers;
 
 import commands.*;
+import exceptions.InvalidCommandException;
 import storage.TaskStorage;
 
 public class CommandParser {
@@ -14,7 +15,7 @@ public class CommandParser {
             case "unmark" -> new UnmarkCommand(storage, argument);
             case "list" -> new ListCommand(storage, argument);
             case "bye" -> new ExitCommand(argument);
-            default -> new InvalidCommand(argument);
+            default -> throw new InvalidCommandException(command);
         };
     }
 }
