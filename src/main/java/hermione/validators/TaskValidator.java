@@ -6,6 +6,16 @@ import hermione.utils.DateUtils;
 
 public class TaskValidator {
 
+    /**
+     * Validates the fields of a task based on its type.
+     * The first field indicates the type of task:
+     * - "T" for Todo
+     * - "D" for Deadline
+     * - "E" for Event
+     * This method checks the number of fields and validates each field according to the task type.
+     *
+     * @param fields An array of strings representing the fields of a task.
+     */
     public void validateFields(String[] fields) {
         if (fields.length < 1) {
             throw new TaskValidationException("Invalid task format: " + String.join(",", fields));
