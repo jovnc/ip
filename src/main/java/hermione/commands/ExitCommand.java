@@ -7,6 +7,12 @@ public class ExitCommand extends Command {
         super(null, argument);
     }
 
+    /**
+     * Executes the command to exit the application.
+     * This method will close the application and return a goodbye message.
+     *
+     * @return A goodbye message indicating the application is closing.
+     */
     @Override
     public String execute() {
         ConsoleUi.exit();

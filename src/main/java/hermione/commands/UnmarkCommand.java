@@ -10,6 +10,14 @@ public class UnmarkCommand extends Command {
         super(storage, argument);
     }
 
+    /**
+     * Executes the command to mark a task as not done by its ID.
+     * Validates the input, checks if the task ID is valid,
+     * and updates the task's completion status in the storage.
+     *
+     * @return A confirmation message indicating the task has been marked as not done.
+     * @throws TaskValidationException If the task ID is invalid or does not exist.
+     */
     @Override
     public String execute() {
         if (argument.isBlank()) {

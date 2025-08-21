@@ -11,6 +11,14 @@ public class DeleteCommand extends Command {
         super(storage, argument);
     }
 
+    /**
+     * Executes the command to delete a task by its ID.
+     * Validates the input, checks if the task ID is valid,
+     * and removes the task from the storage.
+     *
+     * @return A confirmation message indicating the task has been removed and the updated task count.
+     * @throws TaskValidationException If the task ID is invalid or does not exist.
+     */
     @Override
     public String execute() {
         if (argument.isBlank()) {
