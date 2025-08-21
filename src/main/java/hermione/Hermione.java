@@ -28,15 +28,6 @@ public class Hermione {
     }
 
     /**
-     * Starts the Hermione application.
-     * This method initializes the console UI and begins the user interaction loop.
-     * It is the entry point for running the application.
-     */
-    public void run() {
-        this.consoleUI.start();
-    }
-
-    /**
      * Main method to run the Hermione application.
      * This method creates an instance of Hermione with the specified task storage file path
      * and starts the application by calling the run method.
@@ -45,5 +36,14 @@ public class Hermione {
      */
     public static void main(String[] args) {
         new Hermione("data/tasks.csv").run();
+    }
+
+    /**
+     * Starts the Hermione application.
+     * This method initializes the console UI and begins the user interaction loop.
+     * It is the entry point for running the application.
+     */
+    public void run() {
+        this.consoleUI.start();
     }
 }

@@ -15,8 +15,8 @@ import java.util.stream.Collectors;
  */
 public class CsvTaskStorage implements TaskStorage {
 
-    private final Path filePath;
     private static final TaskSerializer taskSerializer = new TaskSerializer();
+    private final Path filePath;
     private TaskList tasks;
 
     /**
@@ -65,9 +65,9 @@ public class CsvTaskStorage implements TaskStorage {
      */
     public void saveTasks(TaskList tasks) {
         List<String> lines = tasks.getTasks()
-                                .stream()
-                                .map(taskSerializer::serialize)
-                                .toList();
+                .stream()
+                .map(taskSerializer::serialize)
+                .toList();
         FileUtils.writeAllLines(this.filePath, lines);
         this.tasks = loadTasks();
     }

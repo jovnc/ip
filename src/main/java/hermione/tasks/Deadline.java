@@ -1,12 +1,9 @@
 package hermione.tasks;
 
-import hermione.utils.DateUtils;
-
 import java.time.LocalDateTime;
 
-/**
- * Represents a Deadline task in the Hermione application.
- */
+import hermione.utils.DateUtils;
+
 public class Deadline extends Task {
 
     private final LocalDateTime by;

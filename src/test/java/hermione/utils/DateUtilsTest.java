@@ -1,10 +1,11 @@
 package hermione.utils;
 
-import hermione.exceptions.DateUtilsException;
+import java.time.LocalDateTime;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDateTime;
+import hermione.exceptions.DateUtilsException;
 
 public class DateUtilsTest {
 

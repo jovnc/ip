@@ -1,5 +1,7 @@
 package hermione.commands;
 
+import java.time.LocalDateTime;
+
 import hermione.exceptions.TaskValidationException;
 import hermione.storage.TaskStorage;
 import hermione.tasks.Event;
@@ -7,12 +9,10 @@ import hermione.tasks.Task;
 import hermione.utils.DateUtils;
 import hermione.utils.UiUtils;
 
-import java.time.LocalDateTime;
-
 /**
  * Represents a command to create a new Event task in the Hermione application.
  */
-public class EventCommand extends Command{
+public class EventCommand extends Command {
 
     private static final String FROM_FLAG = "/from";
     private static final String TO_FLAG = "/to";
