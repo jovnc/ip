@@ -17,11 +17,11 @@ public class Hermione {
         this.consoleUI = new ConsoleUi(NAME, inputProcessor);
     }
 
-    public void run() {
-        this.consoleUI.start();
-    }
-
     public static void main(String[] args) {
         new Hermione("data/tasks.csv").run();
+    }
+
+    public void run() {
+        this.consoleUI.start();
     }
 }

@@ -6,7 +6,7 @@ import hermione.tasks.Task;
 import hermione.tasks.ToDo;
 import hermione.utils.UiUtils;
 
-public class ToDoCommand extends Command{
+public class ToDoCommand extends Command {
     public ToDoCommand(TaskStorage storage, String argument) {
         super(storage, argument);
     }

@@ -1,19 +1,19 @@
 package hermione.storage;
 
-import hermione.tasks.Task;
-import hermione.tasks.TaskList;
-import hermione.utils.FileUtils;
-
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import hermione.tasks.Task;
+import hermione.tasks.TaskList;
+import hermione.utils.FileUtils;
+
 public class CsvTaskStorage implements TaskStorage {
 
-    private final Path filePath;
     private static final TaskSerializer taskSerializer = new TaskSerializer();
+    private final Path filePath;
     private TaskList tasks;
 
     public CsvTaskStorage(String filePath) {
@@ -36,9 +36,9 @@ public class CsvTaskStorage implements TaskStorage {
 
     public void saveTasks(TaskList tasks) {
         List<String> lines = tasks.getTasks()
-                                .stream()
-                                .map(taskSerializer::serialize)
-                                .toList();
+                .stream()
+                .map(taskSerializer::serialize)
+                .toList();
         FileUtils.writeAllLines(this.filePath, lines);
         this.tasks = loadTasks();
     }

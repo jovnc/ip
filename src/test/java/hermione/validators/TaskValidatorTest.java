@@ -1,15 +1,16 @@
 package hermione.validators;
 
-import hermione.exceptions.TaskValidationException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import hermione.exceptions.TaskValidationException;
+
 public class TaskValidatorTest {
 
     private TaskValidator validator;
-
-    private String VALID_DATE_STRING  = "1/1/2021 1600";
+    
+    private String VALID_DATE_STRING = "1/1/2021 1600";
     private String INVALID_DATE_STRING = "2021-01-01 1600";
 
     @BeforeEach

@@ -5,12 +5,11 @@ import java.util.Scanner;
 public class ConsoleUi {
 
     private static final String DIVIDER = "----------------------------------------";
+    private static boolean isRunning = true;
 
     private final Scanner scanner;
     private final InputProcessor inputProcessor;
     private final String name;
-
-    private static boolean isRunning = true;
 
     public ConsoleUi(String name, InputProcessor inputProcessor) {
         this.scanner = new Scanner(System.in);

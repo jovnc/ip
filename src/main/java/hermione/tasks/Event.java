@@ -1,10 +1,10 @@
 package hermione.tasks;
 
-import hermione.utils.DateUtils;
-
 import java.time.LocalDateTime;
 
-public class Event extends Task{
+import hermione.utils.DateUtils;
+
+public class Event extends Task {
     private final LocalDateTime from;
     private final LocalDateTime to;
 
