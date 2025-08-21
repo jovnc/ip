@@ -54,6 +54,10 @@ Here are the tasks in your list:
 4. [E][ ] project meeting (from: Mar 19 2025 16:00 to: Mar 19 2025 18:00)
 ----------------------------------------
 > ----------------------------------------
+Here are the matching tasks in your list:
+1. [E][ ] project meeting (from: Mar 19 2025 16:00 to: Mar 19 2025 18:00)
+----------------------------------------
+> ----------------------------------------
 Noted. I've removed this task:
 [T][X] read book
 Now you have 3 tasks in the list.
