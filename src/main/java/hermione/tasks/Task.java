@@ -4,16 +4,16 @@ package hermione.tasks;
  * Represents a generic task in the Hermione application.
  */
 public abstract class Task {
-    private final String name;
+    private final String description;
     private boolean isCompleted;
 
     public Task(String name, boolean isCompleted) {
-        this.name = name;
+        this.description = name;
         this.isCompleted = isCompleted;
     }
 
-    public String getName() {
-        return this.name;
+    public String getDescription() {
+        return this.description;
     }
 
     public boolean isCompleted() {
@@ -27,7 +27,7 @@ public abstract class Task {
     @Override
     public String toString() {
         String status = this.isCompleted ? "[X]" : "[ ]";
-        return "%s %s".formatted(status, this.name);
+        return "%s %s".formatted(status, this.description);
     }
 
 }

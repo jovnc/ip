@@ -1,0 +1,29 @@
+package hermione.commands;
+
+import hermione.exceptions.TaskValidationException;
+import hermione.storage.TaskStorage;
+import hermione.tasks.TaskList;
+
+/**
+ * FindCommand is a command that allows users to find task by searching for
+ * a keyword in the task description.`
+ */
+public class FindCommand extends Command {
+
+    public FindCommand(TaskStorage storage, String argument) {
+        super(storage, argument);
+    }
+
+    @Override
+    public String execute() {
+        if (argument.isBlank()) {
+            throw new TaskValidationException("Keyword cannot be empty");
+        }
+
+        String keyword = argument.trim();
+        TaskList tasks = storage.getTasks();
+        TaskList matchingTasks = tasks.getTasksByKeyword(keyword);
+
+        return "Here are the matching tasks in your list:\n" + matchingTasks.toString();
+    }
+}

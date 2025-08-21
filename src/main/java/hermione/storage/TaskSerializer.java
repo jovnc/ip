@@ -54,7 +54,7 @@ public class TaskSerializer {
     private String buildBaseFields(Task task) {
         String taskType = getTaskType(task);
         String completed = parseBooleanToBinary(task.isCompleted());
-        String description = task.getName();
+        String description = task.getDescription();
         return String.join(",", taskType, completed, description);
     }
 

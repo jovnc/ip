@@ -38,6 +38,7 @@ public class CommandParser {
             case "mark" -> new MarkCommand(storage, argument);
             case "unmark" -> new UnmarkCommand(storage, argument);
             case "list" -> new ListCommand(storage, argument);
+            case "find" -> new FindCommand(storage, argument);
             case "bye" -> new ExitCommand(argument);
             default -> throw new InvalidCommandException(command);
         };

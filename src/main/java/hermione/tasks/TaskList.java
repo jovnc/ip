@@ -35,6 +35,13 @@ public class TaskList {
         return this.tasks.size();
     }
 
+    public TaskList getTasksByKeyword(String keyword) {
+        List<Task> matchingTasks = tasks.stream()
+                .filter(task -> task.getDescription().toLowerCase().contains(keyword.toLowerCase()))
+                .collect(Collectors.toList());
+        return new TaskList(matchingTasks);
+    }
+
     @Override
     public String toString() {
         return IntStream.range(0, tasks.size())
