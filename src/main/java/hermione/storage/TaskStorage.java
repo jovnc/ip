@@ -3,6 +3,9 @@ package hermione.storage;
 import hermione.tasks.Task;
 import hermione.tasks.TaskList;
 
+/**
+ * Interface for managing storage operations of tasks.
+ */
 public interface TaskStorage {
     TaskList getTasks();
     void addTask(Task task);

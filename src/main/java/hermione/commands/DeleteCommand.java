@@ -5,6 +5,9 @@ import hermione.storage.TaskStorage;
 import hermione.tasks.Task;
 import hermione.tasks.TaskList;
 
+/**
+ * Represents a command to delete a task in the Hermione application.
+ */
 public class DeleteCommand extends Command {
 
     public DeleteCommand(TaskStorage storage, String argument) {

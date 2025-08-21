@@ -9,6 +9,9 @@ import hermione.utils.UiUtils;
 
 import java.time.LocalDateTime;
 
+/**
+ * Represents a command to create a new Event task in the Hermione application.
+ */
 public class EventCommand extends Command{
 
     private static final String FROM_FLAG = "/from";

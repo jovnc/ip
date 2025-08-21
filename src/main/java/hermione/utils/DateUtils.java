@@ -7,6 +7,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+/**
+ * Utility class for handling date and time operations in the Hermione application.
+ */
 public class DateUtils {
 
     /**

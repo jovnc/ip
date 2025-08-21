@@ -2,6 +2,9 @@ package hermione.commands;
 
 import hermione.ui.ConsoleUi;
 
+/**
+ * Represents a command to exit the Hermione application.
+ */
 public class ExitCommand extends Command {
     public ExitCommand(String argument) {
         super(null, argument);

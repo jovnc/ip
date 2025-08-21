@@ -2,6 +2,9 @@ package hermione.commands;
 
 import hermione.storage.TaskStorage;
 
+/**
+ * Represents a command in the Hermione application.
+ */
 public abstract class Command {
 
     protected final TaskStorage storage;

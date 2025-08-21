@@ -4,6 +4,9 @@ import hermione.commands.*;
 import hermione.exceptions.InvalidCommandException;
 import hermione.storage.TaskStorage;
 
+/**
+ * Parses user input commands and arguments to create Command objects.
+ */
 public class CommandParser {
 
     /**

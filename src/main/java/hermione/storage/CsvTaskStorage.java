@@ -10,6 +10,9 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+/**
+ * Represents a file-based task storage implementation that persists tasks in CSV format.
+ */
 public class CsvTaskStorage implements TaskStorage {
 
     private final Path filePath;

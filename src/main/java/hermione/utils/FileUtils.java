@@ -5,6 +5,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
+/**
+ * Utility class for file operations in the Hermione application.
+ */
 public class FileUtils {
 
     /**

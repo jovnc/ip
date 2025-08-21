@@ -5,6 +5,9 @@ import hermione.storage.TaskStorage;
 import hermione.tasks.Task;
 import hermione.tasks.TaskList;
 
+/**
+ * Represents a command to mark a task as done in the Hermione application.
+ */
 public class MarkCommand extends Command {
     public MarkCommand(TaskStorage storage, String argument) {
         super(storage, argument);

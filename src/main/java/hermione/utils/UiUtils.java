@@ -4,6 +4,9 @@ import hermione.storage.TaskStorage;
 import hermione.tasks.Task;
 import hermione.tasks.TaskList;
 
+/**
+ * Utility class for UI-related functionalities in the Hermione application.
+ */
 public class UiUtils {
 
     /**

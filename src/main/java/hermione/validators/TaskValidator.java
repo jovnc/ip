@@ -4,6 +4,9 @@ import hermione.exceptions.DateUtilsException;
 import hermione.exceptions.TaskValidationException;
 import hermione.utils.DateUtils;
 
+/**
+ * Validates the fields of a task based on its type.
+ */
 public class TaskValidator {
 
     /**

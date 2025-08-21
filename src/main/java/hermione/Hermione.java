@@ -5,6 +5,9 @@ import hermione.storage.TaskStorage;
 import hermione.ui.ConsoleUi;
 import hermione.ui.InputProcessor;
 
+/**
+ * The main class for the Hermione application.
+ */
 public class Hermione {
 
     private static final String NAME = "Hermione";

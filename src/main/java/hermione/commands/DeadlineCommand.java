@@ -9,6 +9,9 @@ import hermione.utils.UiUtils;
 
 import java.time.LocalDateTime;
 
+/**
+ * Represents a command to create a new Deadline task in the Hermione application.
+ */
 public class DeadlineCommand extends Command {
 
     private static final String BY_FLAG = "/by";

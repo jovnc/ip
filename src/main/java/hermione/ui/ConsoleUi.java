@@ -2,6 +2,10 @@ package hermione.ui;
 
 import java.util.Scanner;
 
+/**
+ * Represents the console user interface for the Hermione application.
+ * Handles user input and output, allowing interaction with the application.
+ */
 public class ConsoleUi {
 
     private static final String DIVIDER = "----------------------------------------";

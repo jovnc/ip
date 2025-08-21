@@ -6,6 +6,9 @@ import hermione.tasks.Task;
 import hermione.tasks.ToDo;
 import hermione.utils.UiUtils;
 
+/**
+ * Represents a command to create a new ToDo task in the Hermione application.
+ */
 public class ToDoCommand extends Command{
     public ToDoCommand(TaskStorage storage, String argument) {
         super(storage, argument);

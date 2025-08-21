@@ -9,6 +9,11 @@ import hermione.validators.TaskValidator;
 
 import java.time.LocalDateTime;
 
+/**
+ * Represents a serializer for tasks in the Hermione application.
+ * Handles the serialization and deserialization of tasks, ensuring that
+ * the task type, completion status, and description are correctly processed.
+ */
 public class TaskSerializer {
 
     private static final TaskValidator validator = new TaskValidator();

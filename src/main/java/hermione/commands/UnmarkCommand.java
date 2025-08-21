@@ -5,6 +5,9 @@ import hermione.storage.TaskStorage;
 import hermione.tasks.Task;
 import hermione.tasks.TaskList;
 
+/**
+ * Represents a command to unmark a task as not done in the Hermione application.
+ */
 public class UnmarkCommand extends Command {
     public UnmarkCommand(TaskStorage storage, String argument) {
         super(storage, argument);

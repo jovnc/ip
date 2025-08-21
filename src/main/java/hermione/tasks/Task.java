@@ -1,5 +1,8 @@
 package hermione.tasks;
 
+/**
+ * Represents a generic task in the Hermione application.
+ */
 public abstract class Task {
     private final String name;
     private boolean isCompleted;

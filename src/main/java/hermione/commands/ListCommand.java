@@ -3,6 +3,9 @@ package hermione.commands;
 import hermione.storage.TaskStorage;
 import hermione.tasks.TaskList;
 
+/**
+ * Represents a command to list all tasks in the Hermione application.
+ */
 public class ListCommand extends Command {
 
     public ListCommand(TaskStorage storage, String argument) {
