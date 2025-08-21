@@ -5,6 +5,7 @@ import hermione.commands.DeadlineCommand;
 import hermione.commands.DeleteCommand;
 import hermione.commands.EventCommand;
 import hermione.commands.ExitCommand;
+import hermione.commands.FindCommand;
 import hermione.commands.ListCommand;
 import hermione.commands.MarkCommand;
 import hermione.commands.ToDoCommand;
