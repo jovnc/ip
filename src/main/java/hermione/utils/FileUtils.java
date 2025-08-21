@@ -5,8 +5,18 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
+/**
+ * Utility class for file operations in the Hermione application.
+ */
 public class FileUtils {
 
+    /**
+     * Ensures that the specified file exists.
+     * If the file does not exist, it will be created along with any necessary parent directories
+     * if they do not already exist.
+     *
+     * @param filePath The path to the file that should exist.
+     */
     public static void ensureFileExists(Path filePath) {
         try {
             if (filePath.getParent() != null) {
@@ -25,6 +35,15 @@ public class FileUtils {
         }
     }
 
+    /**
+     * Reads all lines from a file at the specified path.
+     * This method ensures that the file exists before attempting to read it.
+     * If the file does not exist or an error occurs during reading, it returns an empty
+     * list.
+     *
+     * @param filePath The path to the file to be read.
+     * @return A list of strings representing the lines in the file, or an empty list if the file does not exist or an error occurs.
+     */
     public static List<String> readAllLines(Path filePath) {
         try {
             ensureFileExists(filePath);
@@ -35,6 +54,15 @@ public class FileUtils {
         }
     }
 
+    /**
+     * Writes all lines to a file at the specified path.
+     * This method ensures that the file exists before attempting to write to it.
+     * If the file does not exist or an error occurs during writing, it prints an error
+     * message to the console.
+     *
+     * @param filePath The path to the file where lines should be written.
+     * @param lines The list of strings to be written to the file.
+     */
     public static void writeAllLines(Path filePath, List<String> lines) {
         try {
             ensureFileExists(filePath);

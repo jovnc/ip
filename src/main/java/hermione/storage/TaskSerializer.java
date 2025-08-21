@@ -9,10 +9,23 @@ import hermione.validators.TaskValidator;
 
 import java.time.LocalDateTime;
 
+/**
+ * Represents a serializer for tasks in the Hermione application.
+ * Handles the serialization and deserialization of tasks, ensuring that
+ * the task type, completion status, and description are correctly processed.
+ */
 public class TaskSerializer {
 
     private static final TaskValidator validator = new TaskValidator();
 
+    /**
+     * Deserializes a line from the CSV file into a Task object.
+     * This method splits the line by commas, extracts the task type, completion status,
+     * and description, and creates the appropriate Task object based on the type.
+     *
+     * @param line The line from the CSV file representing a task.
+     * @return Task object created from the line.
+     */
     public Task deserialize(String line) {
         String[] fields = line.split(",");
 
@@ -23,12 +36,21 @@ public class TaskSerializer {
         return createTask(taskType, isCompleted, description, fields);
     }
 
+    /**
+     * Serializes a Task object into a string format suitable for CSV storage.
+     * This method constructs a string that includes the task type, completion status,
+     * description, and any type-specific fields (like date for Deadline or Event).
+     *
+     * @param task The Task object to be serialized.
+     * @return A string representation of the Task object formatted for CSV storage.
+     */
     public String serialize(Task task) {
         String baseFields = buildBaseFields(task);
         String typeSpecificFields = buildTypeSpecificFields(task);
         return baseFields + typeSpecificFields;
     }
 
+    /* Helper functions */
     private String buildBaseFields(Task task) {
         String taskType = getTaskType(task);
         String completed = parseBooleanToBinary(task.isCompleted());
@@ -45,7 +67,6 @@ public class TaskSerializer {
         return "";
     }
 
-    /* Helper functions */
     private boolean parseBinaryToBoolean(String binary) {
         return switch (binary) {
             case "0" -> false;

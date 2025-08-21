@@ -9,6 +9,9 @@ import hermione.utils.UiUtils;
 
 import java.time.LocalDateTime;
 
+/**
+ * Represents a command to create a new Event task in the Hermione application.
+ */
 public class EventCommand extends Command{
 
     private static final String FROM_FLAG = "/from";
@@ -18,6 +21,14 @@ public class EventCommand extends Command{
         super(storage, argument);
     }
 
+    /**
+     * Executes the command to create a new Event task.
+     * Validates the input format, extracts the description, start time, and end time,
+     * and adds the new task to the storage.
+     *
+     * @return A confirmation message indicating the task has been added and the updated task count.
+     * @throws TaskValidationException If the input format is incorrect or required fields are missing.
+     */
     @Override
     public String execute() {
         int fromIndex = argument.indexOf(FROM_FLAG);

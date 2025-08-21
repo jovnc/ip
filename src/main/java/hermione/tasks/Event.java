@@ -4,6 +4,9 @@ import hermione.utils.DateUtils;
 
 import java.time.LocalDateTime;
 
+/**
+ * Represents an Event task in the Hermione application.
+ */
 public class Event extends Task{
     private final LocalDateTime from;
     private final LocalDateTime to;

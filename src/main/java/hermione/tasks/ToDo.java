@@ -1,5 +1,8 @@
 package hermione.tasks;
 
+/**
+ * Represents a ToDo task in the Hermione application.
+ */
 public class ToDo extends Task{
     public ToDo(String description, boolean isCompleted) {
         super(description, isCompleted);

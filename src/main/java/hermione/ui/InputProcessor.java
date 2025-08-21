@@ -7,6 +7,9 @@ import hermione.exceptions.TaskValidationException;
 import hermione.parsers.CommandParser;
 import hermione.storage.TaskStorage;
 
+/**
+ * Responsible for processing user input commands in the Hermione application.
+ */
 public class InputProcessor {
 
     private final TaskStorage storage;

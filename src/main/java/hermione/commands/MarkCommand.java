@@ -5,11 +5,22 @@ import hermione.storage.TaskStorage;
 import hermione.tasks.Task;
 import hermione.tasks.TaskList;
 
+/**
+ * Represents a command to mark a task as done in the Hermione application.
+ */
 public class MarkCommand extends Command {
     public MarkCommand(TaskStorage storage, String argument) {
         super(storage, argument);
     }
 
+    /**
+     * Executes the command to mark a task as done by its ID.
+     * Validates the input, checks if the task ID is valid,
+     * and updates the task's completion status in the storage.
+     *
+     * @return A confirmation message indicating the task has been marked as done.
+     * @throws TaskValidationException If the task ID is invalid or does not exist.
+     */
     @Override
     public String execute() {
         if (argument.isBlank()) {

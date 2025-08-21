@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+/**
+ * Represents a list of tasks in the Hermione application.
+ */
 public class TaskList {
 
     private List<Task> tasks;
