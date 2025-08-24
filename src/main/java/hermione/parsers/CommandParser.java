@@ -24,9 +24,9 @@ public class CommandParser {
      * It creates and returns a specific Command object corresponding to the command type.
      * If the command is not recognized, it throws an InvalidCommandException.
      *
-     * @param command Command string to parse.
+     * @param command  Command string to parse.
      * @param argument Argument string associated with the command.
-     * @param storage TaskStorage instance used to manage tasks.
+     * @param storage  TaskStorage instance used to manage tasks.
      * @return Command object corresponding to the parsed command.
      * @throws InvalidCommandException If the command is not recognized.
      */

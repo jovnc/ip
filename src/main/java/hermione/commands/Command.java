@@ -13,7 +13,7 @@ public abstract class Command {
     /**
      * Constructor for the Command class.
      *
-     * @param storage The TaskStorage instance used to manage tasks.
+     * @param storage  The TaskStorage instance used to manage tasks.
      * @param argument The argument string that contains the command details.
      */
     public Command(TaskStorage storage, String argument) {

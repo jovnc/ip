@@ -42,7 +42,7 @@ public class FileUtils {
      * list.
      *
      * @param filePath The path to the file to be read.
-     * @return A list of strings representing the lines in the file, or an empty list if the file does not exist or an error occurs.
+     * @return A list of strings representing the lines in the file,
      */
     public static List<String> readAllLines(Path filePath) {
         try {
@@ -61,7 +61,7 @@ public class FileUtils {
      * message to the console.
      *
      * @param filePath The path to the file where lines should be written.
-     * @param lines The list of strings to be written to the file.
+     * @param lines    The list of strings to be written to the file.
      */
     public static void writeAllLines(Path filePath, List<String> lines) {
         try {

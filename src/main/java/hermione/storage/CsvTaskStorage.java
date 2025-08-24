@@ -1,14 +1,14 @@
 package hermione.storage;
 
-import hermione.tasks.Task;
-import hermione.tasks.TaskList;
-import hermione.utils.FileUtils;
-
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+
+import hermione.tasks.Task;
+import hermione.tasks.TaskList;
+import hermione.utils.FileUtils;
 
 /**
  * Represents a file-based task storage implementation that persists tasks in CSV format.
@@ -103,7 +103,7 @@ public class CsvTaskStorage implements TaskStorage {
      * This method updates the completion status of the specified task and saves the updated
      * TaskList to the file.
      *
-     * @param task The Task object whose completion status is to be updated.
+     * @param task       The Task object whose completion status is to be updated.
      * @param isComplete The new completion status of the task (true for complete, false for incomplete).
      */
     public void setTaskCompletion(Task task, boolean isComplete) {

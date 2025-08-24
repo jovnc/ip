@@ -80,9 +80,13 @@ public class TaskSerializer {
     }
 
     private String getTaskType(Task task) {
-        if (task instanceof ToDo) return "T";
-        if (task instanceof Deadline) return "D";
-        if (task instanceof Event) return "E";
+        if (task instanceof ToDo) {
+            return "T";
+        } else if (task instanceof Deadline) {
+            return "D";
+        } else if (task instanceof Event) {
+            return "E";
+        }
         throw new IllegalArgumentException("Unknown task type: " + task.getClass());
     }
 

@@ -18,6 +18,12 @@ public class InputProcessor {
         this.storage = storage;
     }
 
+    /**
+     * Processes the user input command and returns the response message.
+     *
+     * @param message The user input command as a string.
+     * @return The response message after processing the command.
+     */
     public String process(String message) {
         message = message.trim();
         String commandString = message.split(" ")[0];
