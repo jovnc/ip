@@ -2,8 +2,8 @@ package hermione;
 
 import hermione.storage.CsvTaskStorage;
 import hermione.storage.TaskStorage;
-import hermione.ui.ConsoleUi;
-import hermione.ui.InputProcessor;
+import hermione.ui.common.InputProcessor;
+import hermione.ui.console.ConsoleUi;
 
 /**
  * The main class for the Hermione application.

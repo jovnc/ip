@@ -1,6 +1,6 @@
 package hermione.commands;
 
-import hermione.ui.ConsoleUi;
+import hermione.ui.console.ConsoleUi;
 
 /**
  * Represents a command to exit the Hermione application.

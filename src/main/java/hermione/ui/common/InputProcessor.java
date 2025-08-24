@@ -1,10 +1,9 @@
-package hermione.ui;
+package hermione.ui.common;
 
 import hermione.commands.Command;
 import hermione.exceptions.DateUtilsException;
 import hermione.exceptions.InvalidCommandException;
 import hermione.exceptions.TaskValidationException;
-import hermione.parsers.CommandParser;
 import hermione.storage.TaskStorage;
 
 /**

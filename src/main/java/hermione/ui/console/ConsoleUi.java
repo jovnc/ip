@@ -1,6 +1,8 @@
-package hermione.ui;
+package hermione.ui.console;
 
 import java.util.Scanner;
+
+import hermione.ui.common.InputProcessor;
 
 /**
  * Represents the console user interface for the Hermione application.
