@@ -28,7 +28,10 @@ public class DateUtils {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy HHmm");
             return LocalDateTime.parse(dateString, formatter);
         } catch (DateTimeParseException e) {
-            throw new DateUtilsException("Failed to parse date: %s. Make sure to follow the format: d/M/yyyy HHmm".formatted(dateString));
+            throw new DateUtilsException(
+                    "Failed to parse date: %s. Make sure to follow the format: d/M/yyyy HHmm"
+                            .formatted(dateString)
+            );
         }
     }
 
@@ -68,7 +71,10 @@ public class DateUtils {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd yyyy HH:mm");
             return LocalDateTime.parse(dateString, formatter);
         } catch (DateTimeParseException e) {
-            throw new DateUtilsException("Failed to parse date: %s. Make sure to follow the format: MMM dd yyyy HH:mm".formatted(dateString));
+            throw new DateUtilsException(
+                    "Failed to parse date: %s. Make sure to follow the format: MMM dd yyyy HH:mm"
+                            .formatted(dateString)
+            );
         }
     }
 }

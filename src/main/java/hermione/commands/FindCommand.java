@@ -14,6 +14,11 @@ public class FindCommand extends Command {
         super(storage, argument);
     }
 
+    /**
+     * Executes the find command to search for tasks containing the specified keyword.
+     *
+     * @return A string listing all matching tasks.
+     */
     @Override
     public String execute() {
         if (argument.isBlank()) {

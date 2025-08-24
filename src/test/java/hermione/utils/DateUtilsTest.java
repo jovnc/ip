@@ -13,8 +13,7 @@ public class DateUtilsTest {
     public void parseDateString_invalidDateString_throwsException() {
         String invalidDateString = "2021-01-01 12:00:00";
         Assertions.assertThrows(
-                DateUtilsException.class,
-                () -> DateUtils.parseDateString(invalidDateString)
+                DateUtilsException.class, () -> DateUtils.parseDateString(invalidDateString)
         );
     }
 
@@ -38,8 +37,7 @@ public class DateUtilsTest {
     public void undoFormatDate_invalidDateString_throwsException() {
         String invalidDateString = "2021-01-01 12:00:00";
         Assertions.assertThrows(
-                DateUtilsException.class,
-                () -> DateUtils.undoFormatDate(invalidDateString)
+                DateUtilsException.class, () -> DateUtils.undoFormatDate(invalidDateString)
         );
     }
 
@@ -55,8 +53,7 @@ public class DateUtilsTest {
     public void undoFormatDate_invalidDateFormat_throwsException() {
         String dateString = "01/01/2021 1200";
         Assertions.assertThrows(
-                DateUtilsException.class,
-                () -> DateUtils.undoFormatDate(dateString)
+                DateUtilsException.class, () -> DateUtils.undoFormatDate(dateString)
         );
 
     }
