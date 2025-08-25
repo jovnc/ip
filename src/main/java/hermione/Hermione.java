@@ -36,7 +36,13 @@ public class Hermione {
      * @param args Command line arguments.
      */
     public static void main(String[] args) {
-        startGui();
+        if (args.length > 1) {
+            System.out.println("Usage: java -jar hermione.jar [--console]");
+        } else if (args.length == 1 && args[0].equals("--console")) {
+            startConsole();
+        } else {
+            startGui();
+        }
     }
 
     private static void startConsole() {
