@@ -23,4 +23,14 @@ public class UiUtils {
                 + task.toString()
                 + "\nNow you have %d tasks in the list.".formatted(tasks.getSize());
     }
+
+    /**
+     * Returns a greeting message for the application.
+     *
+     * @param name The name of the application or bot.
+     * @return Formatted greeting message.
+     */
+    public static String getGreeting(String name) {
+        return "Hello! I'm %s\nWhat can I do for you?".formatted(name);
+    }
 }
