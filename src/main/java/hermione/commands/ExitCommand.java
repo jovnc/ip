@@ -1,6 +1,7 @@
 package hermione.commands;
 
 import hermione.ui.console.ConsoleUi;
+import javafx.application.Platform;
 
 /**
  * Represents a command to exit the Hermione application.
@@ -19,6 +20,7 @@ public class ExitCommand extends Command {
     @Override
     public String execute() {
         ConsoleUi.exit();
+        Platform.exit();
         return "Bye. Hope to see you soon!";
     }
 }
