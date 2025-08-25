@@ -1,6 +1,9 @@
-package hermione.ui;
+package hermione.ui.console;
 
 import java.util.Scanner;
+
+import hermione.Hermione;
+import hermione.ui.common.UiUtils;
 
 /**
  * Represents the console user interface for the Hermione application.
@@ -12,18 +15,17 @@ public class ConsoleUi {
     private static boolean isRunning = true;
 
     private final Scanner scanner;
-    private final InputProcessor inputProcessor;
     private final String name;
+
+    private final Hermione hermione = new Hermione("data/tasks.csv");
 
     /**
      * Creates a new ConsoleUi instance with the specified name and input processor.
      *
-     * @param name           The name of the application or bot.
-     * @param inputProcessor The input processor to handle user commands.
+     * @param name The name of the application or bot.
      */
-    public ConsoleUi(String name, InputProcessor inputProcessor) {
+    public ConsoleUi(String name) {
         this.scanner = new Scanner(System.in);
-        this.inputProcessor = inputProcessor;
         this.name = name;
     }
 
@@ -40,11 +42,11 @@ public class ConsoleUi {
      * and entering a loop to process user input commands until the application is exited.
      */
     public void start() {
-        printMessage(getGreeting());
+        printMessage(UiUtils.getGreeting(name));
 
         while (isRunning) {
             String input = getUserInput();
-            String result = inputProcessor.process(input);
+            String result = hermione.getResponse(input);
             printMessage(result);
         }
     }
@@ -53,10 +55,6 @@ public class ConsoleUi {
         System.out.println(DIVIDER);
         System.out.println(message);
         System.out.println(DIVIDER);
-    }
-
-    private String getGreeting() {
-        return "Hello! I'm %s\nWhat can I do for you?".formatted(name);
     }
 
     private String getUserInput() {

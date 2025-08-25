@@ -2,8 +2,10 @@ package hermione;
 
 import hermione.storage.CsvTaskStorage;
 import hermione.storage.TaskStorage;
-import hermione.ui.ConsoleUi;
-import hermione.ui.InputProcessor;
+import hermione.ui.common.InputProcessor;
+import hermione.ui.console.ConsoleUi;
+import hermione.ui.fx.Main;
+import javafx.application.Application;
 
 /**
  * The main class for the Hermione application.
@@ -12,7 +14,7 @@ public class Hermione {
 
     private static final String NAME = "Hermione";
 
-    private final ConsoleUi consoleUI;
+    private final InputProcessor inputProcessor;
 
     /**
      * Initializes the Hermione application with a specified file path for task storage.
@@ -23,8 +25,7 @@ public class Hermione {
      */
     public Hermione(String filePath) {
         TaskStorage storage = new CsvTaskStorage(filePath);
-        InputProcessor inputProcessor = new InputProcessor(storage);
-        this.consoleUI = new ConsoleUi(NAME, inputProcessor);
+        this.inputProcessor = new InputProcessor(storage);
     }
 
     /**
@@ -35,15 +36,24 @@ public class Hermione {
      * @param args Command line arguments.
      */
     public static void main(String[] args) {
-        new Hermione("data/tasks.csv").run();
+        startGui();
+    }
+
+    private static void startConsole() {
+        new ConsoleUi(NAME).start();
+    }
+
+    private static void startGui() {
+        Application.launch(Main.class);
     }
 
     /**
-     * Starts the Hermione application.
-     * This method initializes the console UI and begins the user interaction loop.
-     * It is the entry point for running the application.
+     * Gets response from the input processor for the given input.
+     *
+     * @param input The user input command as a string.
+     * @return The response message after processing the command.
      */
-    public void run() {
-        this.consoleUI.start();
+    public String getResponse(String input) {
+        return inputProcessor.process(input);
     }
 }

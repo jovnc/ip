@@ -1,4 +1,4 @@
-package hermione.utils;
+package hermione.ui.common;
 
 import hermione.storage.TaskStorage;
 import hermione.tasks.Task;
@@ -13,7 +13,7 @@ public class UiUtils {
      * Returns a string to indicate that a task has been added to the task list.
      * This string includes the task details and the total number of tasks in the list.
      *
-     * @param task The task that has been added.
+     * @param task    The task that has been added.
      * @param storage The storage containing the task list.
      * @return Formatted string indicating the task has been added and the current number of tasks in the list.
      */
@@ -22,5 +22,15 @@ public class UiUtils {
         return "Got it. I've added this task:\n"
                 + task.toString()
                 + "\nNow you have %d tasks in the list.".formatted(tasks.getSize());
+    }
+
+    /**
+     * Returns a greeting message for the application.
+     *
+     * @param name The name of the application or bot.
+     * @return Formatted greeting message.
+     */
+    public static String getGreeting(String name) {
+        return "Hello! I'm %s\nWhat can I do for you?".formatted(name);
     }
 }

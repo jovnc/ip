@@ -7,7 +7,6 @@ import hermione.tasks.Event;
 import hermione.tasks.Task;
 import hermione.tasks.ToDo;
 import hermione.utils.DateUtils;
-import hermione.validators.TaskValidator;
 
 /**
  * Represents a serializer for tasks in the Hermione application.
@@ -15,8 +14,6 @@ import hermione.validators.TaskValidator;
  * the task type, completion status, and description are correctly processed.
  */
 public class TaskSerializer {
-
-    private static final TaskValidator validator = new TaskValidator();
 
     /**
      * Deserializes a line from the CSV file into a Task object.
