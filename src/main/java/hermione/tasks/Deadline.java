@@ -12,7 +12,8 @@ public class Deadline extends Task {
     private final LocalDateTime by;
 
     /**
-     * Constructs a Deadline task with the specified description, completion status, and deadline date and time.
+     * Constructs a Deadline task with the specified description, completion status,
+     * and deadline date and time.
      *
      * @param description The description of the deadline task.
      * @param isCompleted Whether the task is completed.
@@ -34,7 +35,7 @@ public class Deadline extends Task {
 
     @Override
     public String toString() {
-        return "[D]"
+        return "[" + TaskType.DEADLINE.getCode() + "]"
                 + super.toString()
                 + " (by: %s)".formatted(DateUtils.formatDate(this.by));
     }

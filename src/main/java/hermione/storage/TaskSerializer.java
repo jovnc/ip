@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import hermione.tasks.Deadline;
 import hermione.tasks.Event;
 import hermione.tasks.Task;
+import hermione.tasks.TaskType;
 import hermione.tasks.ToDo;
 import hermione.utils.DateUtils;
 
@@ -17,9 +18,6 @@ public class TaskSerializer {
 
     private static final String COMPLETED_TRUE = "1";
     private static final String COMPLETED_FALSE = "0";
-    private static final String TODO_TYPE = "T";
-    private static final String DEADLINE_TYPE = "D";
-    private static final String EVENT_TYPE = "E";
 
     /**
      * Deserializes a line from the CSV file into a Task object.
@@ -86,21 +84,21 @@ public class TaskSerializer {
 
     private String getTaskType(Task task) {
         if (task instanceof ToDo) {
-            return TODO_TYPE;
+            return TaskType.TODO.getCode();
         } else if (task instanceof Deadline) {
-            return DEADLINE_TYPE;
+            return TaskType.DEADLINE.getCode();
         } else if (task instanceof Event) {
-            return EVENT_TYPE;
+            return TaskType.EVENT.getCode();
         }
-        throw new IllegalArgumentException("Unknown task type: " + task.getClass());
+        throw new IllegalArgumentException("Unknown task type: " + (task != null ? task.getClass() : "null"));
     }
 
     private Task createTask(String taskType, boolean isCompleted, String description, String[] fields) {
-        return switch (taskType) {
-            case TODO_TYPE -> new ToDo(description, isCompleted);
-            case DEADLINE_TYPE -> createDeadlineTask(description, isCompleted, fields);
-            case EVENT_TYPE -> createEventTask(description, isCompleted, fields);
-            default -> throw new IllegalArgumentException("Invalid task type: " + taskType);
+        TaskType type = TaskType.fromCode(taskType);
+        return switch (type) {
+            case TODO -> new ToDo(description, isCompleted);
+            case DEADLINE -> createDeadlineTask(description, isCompleted, fields);
+            case EVENT -> createEventTask(description, isCompleted, fields);
         };
     }
 

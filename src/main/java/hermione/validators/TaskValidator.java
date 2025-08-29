@@ -2,6 +2,7 @@ package hermione.validators;
 
 import hermione.exceptions.DateUtilsException;
 import hermione.exceptions.TaskValidationException;
+import hermione.tasks.TaskType;
 import hermione.utils.DateUtils;
 
 /**
@@ -29,14 +30,12 @@ public class TaskValidator {
             throw new TaskValidationException("Invalid task format: " + String.join(",", fields));
         }
 
-        String taskType = fields[0];
+        String taskTypeCode = fields[0];
+        TaskType taskType = TaskType.fromCode(taskTypeCode);
         switch (taskType) {
-            case "T" -> validateTodoFields(fields);
-            case "D" -> validateDeadlineFields(fields);
-            case "E" -> validateEventFields(fields);
-            default -> {
-                throw new TaskValidationException("Invalid task type: " + taskType);
-            }
+            case TODO -> validateTodoFields(fields);
+            case DEADLINE -> validateDeadlineFields(fields);
+            case EVENT -> validateEventFields(fields);
         }
     }
 

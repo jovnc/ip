@@ -46,7 +46,7 @@ public class Event extends Task {
 
     @Override
     public String toString() {
-        return "[E]"
+        return "[" + TaskType.EVENT.getCode() + "]"
                 + super.toString()
                 + " (from: %s to: %s)".formatted(DateUtils.formatDate(this.from), DateUtils.formatDate(this.to));
     }
