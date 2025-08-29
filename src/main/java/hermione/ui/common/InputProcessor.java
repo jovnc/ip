@@ -13,6 +13,11 @@ public class InputProcessor {
 
     private final TaskStorage storage;
 
+    /**
+     * Constructs an InputProcessor with the specified TaskStorage.
+     *
+     * @param storage The TaskStorage instance to be used for task management.
+     */
     public InputProcessor(TaskStorage storage) {
         this.storage = storage;
     }
@@ -24,9 +29,21 @@ public class InputProcessor {
      * @return The response message after processing the command.
      */
     public String process(String message) {
-        message = message.trim();
-        String commandString = message.split(" ")[0];
-        String argument = message.substring(commandString.length()).trim();
+        String commandString = getCommandString(message);
+        String argument = getArgument(message);
+        return executeCommand(commandString, argument);
+    }
+
+    private String getCommandString(String message) {
+        return message.trim().split(" ")[0];
+    }
+
+    private String getArgument(String message) {
+        String commandWord = getCommandString(message);
+        return message.substring(commandWord.length()).trim();
+    }
+
+    private String executeCommand(String commandString, String argument) {
         try {
             Command command = CommandParser.parse(commandString, argument, storage);
             return command.execute();

@@ -2,6 +2,7 @@ package hermione.validators;
 
 import hermione.exceptions.DateUtilsException;
 import hermione.exceptions.TaskValidationException;
+import hermione.tasks.TaskType;
 import hermione.utils.DateUtils;
 
 /**
@@ -9,13 +10,18 @@ import hermione.utils.DateUtils;
  */
 public class TaskValidator {
 
+    private static final int TODO_FIELD_COUNT = 3;
+    private static final int DEADLINE_FIELD_COUNT = 4;
+    private static final int EVENT_FIELD_COUNT = 5;
+
     /**
      * Validates the fields of a task based on its type.
      * The first field indicates the type of task:
      * - "T" for Todo
      * - "D" for Deadline
      * - "E" for Event
-     * This method checks the number of fields and validates each field according to the task type.
+     * This method checks the number of fields and validates each field according to
+     * the task type.
      *
      * @param fields An array of strings representing the fields of a task.
      */
@@ -24,20 +30,25 @@ public class TaskValidator {
             throw new TaskValidationException("Invalid task format: " + String.join(",", fields));
         }
 
-        String taskType = fields[0];
+        String taskTypeCode = fields[0];
+        TaskType taskType;
+        try {
+            taskType = TaskType.fromCode(taskTypeCode);
+        } catch (IllegalArgumentException e) {
+            throw new TaskValidationException("Invalid task type: " + taskTypeCode);
+        }
+
         switch (taskType) {
-            case "T" -> validateTodoFields(fields);
-            case "D" -> validateDeadlineFields(fields);
-            case "E" -> validateEventFields(fields);
-            default -> {
-                throw new TaskValidationException("Invalid task type: " + taskType);
-            }
+            case TODO -> validateTodoFields(fields);
+            case DEADLINE -> validateDeadlineFields(fields);
+            case EVENT -> validateEventFields(fields);
+            default -> throw new TaskValidationException("Unsupported task type: " + taskType);
         }
     }
 
     /* Helper functions to validate based on a task type */
     private void validateTodoFields(String[] fields) {
-        if (fields.length != 3) {
+        if (fields.length != TODO_FIELD_COUNT) {
             throw new TaskValidationException("Invalid number of fields for Todo Task");
         }
 
@@ -49,7 +60,7 @@ public class TaskValidator {
     }
 
     private void validateDeadlineFields(String[] fields) {
-        if (fields.length != 4) {
+        if (fields.length != DEADLINE_FIELD_COUNT) {
             throw new TaskValidationException("Invalid number of fields for Deadline Task");
         }
 
@@ -64,7 +75,7 @@ public class TaskValidator {
     }
 
     private void validateEventFields(String[] fields) {
-        if (fields.length != 5) {
+        if (fields.length != EVENT_FIELD_COUNT) {
             throw new TaskValidationException("Invalid number of fields for Event Task");
         }
 

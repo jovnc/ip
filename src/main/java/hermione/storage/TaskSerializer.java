@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import hermione.tasks.Deadline;
 import hermione.tasks.Event;
 import hermione.tasks.Task;
+import hermione.tasks.TaskType;
 import hermione.tasks.ToDo;
 import hermione.utils.DateUtils;
 
@@ -15,9 +16,13 @@ import hermione.utils.DateUtils;
  */
 public class TaskSerializer {
 
+    private static final String COMPLETED_TRUE = "1";
+    private static final String COMPLETED_FALSE = "0";
+
     /**
      * Deserializes a line from the CSV file into a Task object.
-     * This method splits the line by commas, extracts the task type, completion status,
+     * This method splits the line by commas, extracts the task type, completion
+     * status,
      * and description, and creates the appropriate Task object based on the type.
      *
      * @param line The line from the CSV file representing a task.
@@ -35,7 +40,8 @@ public class TaskSerializer {
 
     /**
      * Serializes a Task object into a string format suitable for CSV storage.
-     * This method constructs a string that includes the task type, completion status,
+     * This method constructs a string that includes the task type, completion
+     * status,
      * description, and any type-specific fields (like date for Deadline or Event).
      *
      * @param task The Task object to be serialized.
@@ -66,33 +72,33 @@ public class TaskSerializer {
 
     private boolean parseBinaryToBoolean(String binary) {
         return switch (binary) {
-            case "0" -> false;
-            case "1" -> true;
+            case COMPLETED_FALSE -> false;
+            case COMPLETED_TRUE -> true;
             default -> throw new IllegalArgumentException("Invalid binary value: " + binary);
         };
     }
 
     private String parseBooleanToBinary(boolean bool) {
-        return bool ? "1" : "0";
+        return bool ? COMPLETED_TRUE : COMPLETED_FALSE;
     }
 
     private String getTaskType(Task task) {
         if (task instanceof ToDo) {
-            return "T";
+            return TaskType.TODO.getCode();
         } else if (task instanceof Deadline) {
-            return "D";
+            return TaskType.DEADLINE.getCode();
         } else if (task instanceof Event) {
-            return "E";
+            return TaskType.EVENT.getCode();
         }
-        throw new IllegalArgumentException("Unknown task type: " + task.getClass());
+        throw new IllegalArgumentException("Unknown task type: " + (task != null ? task.getClass() : "null"));
     }
 
     private Task createTask(String taskType, boolean isCompleted, String description, String[] fields) {
-        return switch (taskType) {
-            case "T" -> new ToDo(description, isCompleted);
-            case "D" -> createDeadlineTask(description, isCompleted, fields);
-            case "E" -> createEventTask(description, isCompleted, fields);
-            default -> throw new IllegalArgumentException("Invalid task type: " + taskType);
+        TaskType type = TaskType.fromCode(taskType);
+        return switch (type) {
+            case TODO -> new ToDo(description, isCompleted);
+            case DEADLINE -> createDeadlineTask(description, isCompleted, fields);
+            case EVENT -> createEventTask(description, isCompleted, fields);
         };
     }
 
