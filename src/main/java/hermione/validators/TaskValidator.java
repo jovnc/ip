@@ -31,11 +31,18 @@ public class TaskValidator {
         }
 
         String taskTypeCode = fields[0];
-        TaskType taskType = TaskType.fromCode(taskTypeCode);
+        TaskType taskType;
+        try {
+            taskType = TaskType.fromCode(taskTypeCode);
+        } catch (IllegalArgumentException e) {
+            throw new TaskValidationException("Invalid task type: " + taskTypeCode);
+        }
+
         switch (taskType) {
             case TODO -> validateTodoFields(fields);
             case DEADLINE -> validateDeadlineFields(fields);
             case EVENT -> validateEventFields(fields);
+            default -> throw new TaskValidationException("Unsupported task type: " + taskType);
         }
     }
 
