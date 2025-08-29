@@ -20,7 +20,9 @@ then
 fi
 
 # run the program, feed hermione.commands from input.txt file and redirect the output to the ACTUAL.TXT
-java -classpath ../bin hermione/Hermione < input.txt > ACTUAL.TXT
+java -classpath ../bin hermione.Hermione --console < input.txt > ACTUAL.TXT
+
+cat EXPECTED-UNIX.TXT
 
 # convert to UNIX format
 cp EXPECTED.TXT EXPECTED-UNIX.TXT

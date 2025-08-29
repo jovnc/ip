@@ -19,92 +19,83 @@ public class TaskValidatorTest {
 
     @Test
     public void validateFields_invalidTaskType_throwsException() {
-        String[] invalidFields = {"X", "0", "Description"};
+        String[] invalidFields = { "X", "0", "Description" };
         Assertions.assertThrows(
-                TaskValidationException.class, () -> this.validator.validateFields(invalidFields)
-        );
+                TaskValidationException.class, () -> this.validator.validateFields(invalidFields));
     }
 
     @Test
     public void validateFields_validToDoFields_noException() {
-        String[] validFields = {"T", "0", "Description"};
+        String[] validFields = { "T", "0", "Description" };
         Assertions.assertDoesNotThrow(() -> this.validator.validateFields(validFields));
     }
 
     @Test
     public void validateFields_emptyToDoTaskDescription_throwsException() {
-        String[] invalidFields = {"T", "0", ""};
+        String[] invalidFields = { "T", "0", "" };
         Assertions.assertThrows(
-                TaskValidationException.class, () -> this.validator.validateFields(invalidFields)
-        );
+                TaskValidationException.class, () -> this.validator.validateFields(invalidFields));
     }
 
     @Test
     public void validateFields_invalidToDoTaskIsComplete_throwsException() {
-        String[] invalidFields = {"T", "Yes", "Description"};
+        String[] invalidFields = { "T", "Yes", "Description" };
         Assertions.assertThrows(
-                TaskValidationException.class, () -> this.validator.validateFields(invalidFields)
-        );
+                TaskValidationException.class, () -> this.validator.validateFields(invalidFields));
     }
 
     @Test
     public void validateFields_validDeadlineFields_noException() {
-        String[] validFields = {"D", "0", "Description", validDateString};
+        String[] validFields = { "D", "0", "Description", validDateString };
         Assertions.assertDoesNotThrow(() -> this.validator.validateFields(validFields));
     }
 
     @Test
     public void validateFields_emptyDeadlineTaskDescription_throwsException() {
-        String[] invalidFields = {"D", "0", "", validDateString};
+        String[] invalidFields = { "D", "0", "", validDateString };
         Assertions.assertThrows(
-                TaskValidationException.class, () -> this.validator.validateFields(invalidFields)
-        );
+                TaskValidationException.class, () -> this.validator.validateFields(invalidFields));
     }
 
     @Test
     public void validateFields_invalidDeadlineTaskIsComplete_throwsException() {
-        String[] invalidFields = {"D", "Yes", "Description", validDateString};
+        String[] invalidFields = { "D", "Yes", "Description", validDateString };
         Assertions.assertThrows(
-                TaskValidationException.class, () -> this.validator.validateFields(invalidFields)
-        );
+                TaskValidationException.class, () -> this.validator.validateFields(invalidFields));
     }
 
     @Test
     public void validateFields_invalidDeadlineTaskByDate_throwsException() {
-        String[] invalidFields = {"D", "0", "Description", invalidDateString};
+        String[] invalidFields = { "D", "0", "Description", invalidDateString };
         Assertions.assertThrows(
-                TaskValidationException.class, () -> this.validator.validateFields(invalidFields)
-        );
+                TaskValidationException.class, () -> this.validator.validateFields(invalidFields));
     }
 
     @Test
     public void validatefields_validEventFields_noException() {
-        String[] validFields = {"E", "0", "Description", validDateString, validDateString};
+        String[] validFields = { "E", "0", "Description", validDateString, validDateString };
         Assertions.assertDoesNotThrow(() -> this.validator.validateFields(validFields));
     }
 
     @Test
     public void validateFields_emptyEventTaskDescription_throwsException() {
-        String[] invalidFields = {"E", "0", "", validDateString, validDateString};
+        String[] invalidFields = { "E", "0", "", validDateString, validDateString };
         Assertions.assertThrows(
-                TaskValidationException.class, () -> this.validator.validateFields(invalidFields)
-        );
+                TaskValidationException.class, () -> this.validator.validateFields(invalidFields));
     }
 
     @Test
     public void validateFields_invalidEventTaskFromDate_throwsException() {
-        String[] invalidFields = {"E", "0", "Description", invalidDateString, validDateString};
+        String[] invalidFields = { "E", "0", "Description", invalidDateString, validDateString };
         Assertions.assertThrows(
-                TaskValidationException.class, () -> this.validator.validateFields(invalidFields)
-        );
+                TaskValidationException.class, () -> this.validator.validateFields(invalidFields));
     }
 
     @Test
     public void validateFields_invalidEventTaskToDate_throwsException() {
-        String[] invalidFields = {"E", "0", "Description", validDateString, invalidDateString};
+        String[] invalidFields = { "E", "0", "Description", validDateString, invalidDateString };
         Assertions.assertThrows(
-                TaskValidationException.class, () -> this.validator.validateFields(invalidFields)
-        );
+                TaskValidationException.class, () -> this.validator.validateFields(invalidFields));
     }
 
 }

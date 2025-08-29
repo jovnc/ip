@@ -14,13 +14,16 @@ public class ListCommand extends Command {
 
     /**
      * Executes the command to list all tasks.
-     * This method retrieves the list of tasks from storage and formats them for display.
+     * This method retrieves the list of tasks from storage and formats them for
+     * display. It also includes the number of completed tasks in the list.
      *
      * @return A string containing the formatted list of tasks.
      */
     @Override
     public String execute() {
         TaskList tasks = storage.getTasks();
-        return "Here are the tasks in your list:\n" + tasks.toString();
+        return "Here are the tasks in your list:\n"
+                + tasks.toString()
+                + "\nYou have %d completed tasks.".formatted(tasks.getCompletedCount());
     }
 }
