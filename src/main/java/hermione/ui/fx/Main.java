@@ -14,7 +14,7 @@ import javafx.stage.Stage;
  */
 public class Main extends Application {
 
-    private Hermione hermione = new Hermione("data/tasks.csv");
+    private final Hermione hermione = new Hermione("data/tasks.csv");
 
     @Override
     public void start(Stage stage) {
