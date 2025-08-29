@@ -9,13 +9,18 @@ import hermione.utils.DateUtils;
  */
 public class TaskValidator {
 
+    private static final int TODO_FIELD_COUNT = 3;
+    private static final int DEADLINE_FIELD_COUNT = 4;
+    private static final int EVENT_FIELD_COUNT = 5;
+
     /**
      * Validates the fields of a task based on its type.
      * The first field indicates the type of task:
      * - "T" for Todo
      * - "D" for Deadline
      * - "E" for Event
-     * This method checks the number of fields and validates each field according to the task type.
+     * This method checks the number of fields and validates each field according to
+     * the task type.
      *
      * @param fields An array of strings representing the fields of a task.
      */
@@ -37,7 +42,7 @@ public class TaskValidator {
 
     /* Helper functions to validate based on a task type */
     private void validateTodoFields(String[] fields) {
-        if (fields.length != 3) {
+        if (fields.length != TODO_FIELD_COUNT) {
             throw new TaskValidationException("Invalid number of fields for Todo Task");
         }
 
@@ -49,7 +54,7 @@ public class TaskValidator {
     }
 
     private void validateDeadlineFields(String[] fields) {
-        if (fields.length != 4) {
+        if (fields.length != DEADLINE_FIELD_COUNT) {
             throw new TaskValidationException("Invalid number of fields for Deadline Task");
         }
 
@@ -64,7 +69,7 @@ public class TaskValidator {
     }
 
     private void validateEventFields(String[] fields) {
-        if (fields.length != 5) {
+        if (fields.length != EVENT_FIELD_COUNT) {
             throw new TaskValidationException("Invalid number of fields for Event Task");
         }
 
