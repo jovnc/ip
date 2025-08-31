@@ -1,5 +1,6 @@
 package hermione.commands;
 
+import hermione.storage.TaskStorage;
 import hermione.ui.console.ConsoleUi;
 import javafx.application.Platform;
 
@@ -7,8 +8,8 @@ import javafx.application.Platform;
  * Represents a command to exit the Hermione application.
  */
 public class ExitCommand extends Command {
-    public ExitCommand(String argument) {
-        super(null, argument);
+    public ExitCommand(TaskStorage storage, String argument) {
+        super(storage, argument);
     }
 
     /**

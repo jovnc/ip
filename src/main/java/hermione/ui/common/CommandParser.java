@@ -6,6 +6,7 @@ import hermione.commands.DeleteCommand;
 import hermione.commands.EventCommand;
 import hermione.commands.ExitCommand;
 import hermione.commands.FindCommand;
+import hermione.commands.HelpCommand;
 import hermione.commands.ListCommand;
 import hermione.commands.MarkCommand;
 import hermione.commands.ToDoCommand;
@@ -40,7 +41,8 @@ public class CommandParser {
             case "unmark" -> new UnmarkCommand(storage, argument);
             case "list" -> new ListCommand(storage, argument);
             case "find" -> new FindCommand(storage, argument);
-            case "bye" -> new ExitCommand(argument);
+            case "bye" -> new ExitCommand(storage, argument);
+            case "help" -> new HelpCommand(storage, argument);
             default -> throw new InvalidCommandException(command);
         };
     }
