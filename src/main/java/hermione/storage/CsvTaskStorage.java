@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import hermione.tasks.Task;
 import hermione.tasks.TaskList;
 import hermione.utils.FileUtils;
+import hermione.utils.StorageUtils;
 
 /**
  * Represents a file-based task storage implementation that persists tasks in
@@ -16,7 +17,7 @@ import hermione.utils.FileUtils;
  */
 public class CsvTaskStorage implements TaskStorage {
 
-    private static final TaskSerializer taskSerializer = new TaskSerializer();
+    private static final StorageUtils STORAGE_UTILS = new StorageUtils();
     private final Path filePath;
     private TaskList tasks;
 
@@ -44,7 +45,7 @@ public class CsvTaskStorage implements TaskStorage {
     private void saveTasks(TaskList tasks) {
         List<String> lines = tasks.getTasks()
                 .stream()
-                .map(taskSerializer::serialize)
+                .map(STORAGE_UTILS::serialize)
                 .toList();
         FileUtils.writeAllLines(this.filePath, lines);
         this.tasks = loadTasks();
@@ -82,6 +83,6 @@ public class CsvTaskStorage implements TaskStorage {
     }
 
     private Task parseTaskSafely(String line) {
-        return taskSerializer.deserialize(line);
+        return STORAGE_UTILS.deserialize(line);
     }
 }

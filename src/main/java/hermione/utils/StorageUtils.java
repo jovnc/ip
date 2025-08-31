@@ -1,4 +1,4 @@
-package hermione.storage;
+package hermione.utils;
 
 import java.time.LocalDateTime;
 
@@ -7,14 +7,13 @@ import hermione.tasks.Event;
 import hermione.tasks.Task;
 import hermione.tasks.TaskType;
 import hermione.tasks.ToDo;
-import hermione.utils.DateUtils;
 
 /**
  * Represents a serializer for tasks in the Hermione application.
  * Handles the serialization and deserialization of tasks, ensuring that
  * the task type, completion status, and description are correctly processed.
  */
-public class TaskSerializer {
+public class StorageUtils {
 
     private static final String COMPLETED_TRUE = "1";
     private static final String COMPLETED_FALSE = "0";
