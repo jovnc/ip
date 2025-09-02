@@ -6,7 +6,7 @@ package hermione.tasks;
  * Each task type has an associated code used for serialization and storage.
  */
 public enum TaskType {
-    TODO("T"), DEADLINE("D"), EVENT("E");
+    TODO("T"), DEADLINE("D"), EVENT("E"), FIXED_DURATION_TASK("F");
 
     private final String code;
 
@@ -17,15 +17,6 @@ public enum TaskType {
      */
     TaskType(String code) {
         this.code = code;
-    }
-
-    /**
-     * Gets the code associated with this task type.
-     *
-     * @return The single-character code for this task type.
-     */
-    public String getCode() {
-        return code;
     }
 
     /**
@@ -42,5 +33,14 @@ public enum TaskType {
             }
         }
         throw new IllegalArgumentException("Invalid task type code: " + code);
+    }
+
+    /**
+     * Gets the code associated with this task type.
+     *
+     * @return The single-character code for this task type.
+     */
+    public String getCode() {
+        return code;
     }
 }
