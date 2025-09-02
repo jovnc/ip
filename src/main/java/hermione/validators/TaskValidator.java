@@ -40,11 +40,11 @@ public class TaskValidator {
         }
 
         switch (taskType) {
-        case TODO -> validateTodoFields(fields);
-        case DEADLINE -> validateDeadlineFields(fields);
-        case EVENT -> validateEventFields(fields);
-        case FIXED_DURATION_TASK -> validateFixedDurationFields(fields);
-        default -> throw new TaskValidationException("Unsupported task type: " + taskType);
+            case TODO -> validateTodoFields(fields);
+            case DEADLINE -> validateDeadlineFields(fields);
+            case EVENT -> validateEventFields(fields);
+            case FIXED_DURATION_TASK -> validateFixedDurationFields(fields);
+            default -> throw new TaskValidationException("Unsupported task type: " + taskType);
         }
     }
 

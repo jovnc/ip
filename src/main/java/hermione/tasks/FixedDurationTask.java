@@ -1,5 +1,8 @@
 package hermione.tasks;
 
+/**
+ * Represents a task with a fixed duration in the Hermione application.
+ */
 public class FixedDurationTask extends Task {
 
     /**
