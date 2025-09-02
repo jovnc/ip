@@ -6,6 +6,7 @@ import hermione.commands.DeleteCommand;
 import hermione.commands.EventCommand;
 import hermione.commands.ExitCommand;
 import hermione.commands.FindCommand;
+import hermione.commands.FixedDurationTaskCommand;
 import hermione.commands.HelpCommand;
 import hermione.commands.ListCommand;
 import hermione.commands.MarkCommand;
@@ -36,6 +37,7 @@ public class CommandParser {
             case "deadline" -> new DeadlineCommand(storage, argument);
             case "todo" -> new ToDoCommand(storage, argument);
             case "event" -> new EventCommand(storage, argument);
+            case "fixed" -> new FixedDurationTaskCommand(storage, argument);
             case "delete" -> new DeleteCommand(storage, argument);
             case "mark" -> new MarkCommand(storage, argument);
             case "unmark" -> new UnmarkCommand(storage, argument);

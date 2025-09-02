@@ -3,6 +3,7 @@ package hermione.ui.common;
 import hermione.commands.Command;
 import hermione.exceptions.DateUtilsException;
 import hermione.exceptions.InvalidCommandException;
+import hermione.exceptions.NumberUtilsException;
 import hermione.exceptions.TaskValidationException;
 import hermione.storage.TaskStorage;
 
@@ -47,11 +48,10 @@ public class InputProcessor {
         try {
             Command command = CommandParser.parse(commandString, argument, storage);
             return command.execute();
-        } catch (DateUtilsException | InvalidCommandException | TaskValidationException e) {
+        } catch (DateUtilsException | InvalidCommandException | TaskValidationException | NumberUtilsException e) {
             return e.getMessage();
         } catch (Exception e) {
             return "An unexpected error occurred. Please try again.";
         }
     }
-
 }

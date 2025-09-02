@@ -34,6 +34,7 @@ public class HelpCommand extends Command {
                 4. todo {description} - Add a new ToDo task
                 5. deadline {description} /by {date} - Add a new Deadline task
                 6. event {description} /from {start date} /to {end date} - Add a new Event task
+                7. fixed {description} /duration {duration} - Add a new Fixed Duration task
                 7. mark {task number} - Mark a task as completed
                 8. unmark {task number} - Unmark a task as not completed
                 9. delete {task number} - Delete a task

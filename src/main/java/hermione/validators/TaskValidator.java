@@ -12,6 +12,7 @@ public class TaskValidator {
 
     private static final int TODO_FIELD_COUNT = 3;
     private static final int DEADLINE_FIELD_COUNT = 4;
+    private static final int FIXED_DURATION_FIELD_COUNT = 4;
     private static final int EVENT_FIELD_COUNT = 5;
 
     /**
@@ -42,6 +43,7 @@ public class TaskValidator {
             case TODO -> validateTodoFields(fields);
             case DEADLINE -> validateDeadlineFields(fields);
             case EVENT -> validateEventFields(fields);
+            case FIXED_DURATION_TASK -> validateFixedDurationFields(fields);
             default -> throw new TaskValidationException("Unsupported task type: " + taskType);
         }
     }
@@ -57,6 +59,31 @@ public class TaskValidator {
 
         String description = fields[2];
         validateDescription(description);
+    }
+
+    private void validateFixedDurationFields(String[] fields) {
+        if (fields.length != FIXED_DURATION_FIELD_COUNT) {
+            throw new TaskValidationException("Invalid number of fields for Fixed Duration Task");
+        }
+
+        String isCompleted = fields[1];
+        validateIsCompleted(isCompleted);
+
+        String description = fields[2];
+        validateDescription(description);
+
+        String durationStr = fields[3];
+        if (durationStr.isBlank()) {
+            throw new TaskValidationException("Duration cannot be empty");
+        }
+        try {
+            int duration = Integer.parseInt(durationStr);
+            if (duration <= 0) {
+                throw new TaskValidationException("Duration must be a positive integer");
+            }
+        } catch (NumberFormatException e) {
+            throw new TaskValidationException("Invalid duration format: " + durationStr);
+        }
     }
 
     private void validateDeadlineFields(String[] fields) {

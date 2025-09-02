@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import hermione.tasks.Deadline;
 import hermione.tasks.Event;
+import hermione.tasks.FixedDurationTask;
 import hermione.tasks.Task;
 import hermione.tasks.TaskType;
 import hermione.tasks.ToDo;
@@ -80,11 +81,17 @@ public class StorageUtils {
             case TODO -> buildToDo(description, isCompleted);
             case DEADLINE -> buildDeadline(description, isCompleted, fields);
             case EVENT -> buildEvent(description, isCompleted, fields);
+            case FIXED_DURATION_TASK -> buildFixedDurationTask(description, isCompleted, fields);
         };
     }
 
     private ToDo buildToDo(String description, boolean isCompleted) {
         return new ToDo(description, isCompleted);
+    }
+
+    private FixedDurationTask buildFixedDurationTask(String description, boolean isCompleted, String[] fields) {
+        int duration = parseStringToInt(getFieldSafely(fields, 3));
+        return new FixedDurationTask(description, isCompleted, duration);
     }
 
     private Deadline buildDeadline(String description, boolean isCompleted, String[] fields) {
@@ -111,15 +118,20 @@ public class StorageUtils {
             case TODO -> "";
             case DEADLINE -> buildDeadlineFields((Deadline) task);
             case EVENT -> buildEventFields((Event) task);
+            case FIXED_DURATION_TASK -> buildFixedDurationTaskFields((FixedDurationTask) task);
         };
     }
 
     private String buildDeadlineFields(Deadline deadline) {
-        return "," + DateUtils.formatDate(deadline.getBy());
+        return ", " + DateUtils.formatDate(deadline.getBy());
     }
 
     private String buildEventFields(Event event) {
-        return "," + DateUtils.formatDate(event.getFrom()) + "," + DateUtils.formatDate(event.getTo());
+        return ", " + DateUtils.formatDate(event.getFrom()) + ", " + DateUtils.formatDate(event.getTo());
+    }
+
+    private String buildFixedDurationTaskFields(FixedDurationTask task) {
+        return ", " + task.getDuration();
     }
 
     /* Utility methods */
@@ -135,6 +147,10 @@ public class StorageUtils {
         return bool ? COMPLETED_TRUE : COMPLETED_FALSE;
     }
 
+    private int parseStringToInt(String str) {
+        return NumberUtils.parsePositiveInt(str);
+    }
+
     private String getTaskType(Task task) {
         return getTaskTypeEnum(task).getCode();
     }
@@ -146,6 +162,8 @@ public class StorageUtils {
             return TaskType.DEADLINE;
         } else if (task instanceof Event) {
             return TaskType.EVENT;
+        } else if (task instanceof FixedDurationTask) {
+            return TaskType.FIXED_DURATION_TASK;
         }
         throw new IllegalArgumentException("Unknown task type: " + (task != null ? task.getClass() : "null"));
     }
