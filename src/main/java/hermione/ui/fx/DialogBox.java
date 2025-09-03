@@ -41,9 +41,9 @@ public class DialogBox extends HBox {
         dialog.setText(text);
 
         // Set up circular clipping for the display picture
-        displayCircle.setStroke(Color.SEAGREEN);
+        displayCircle.setStroke(Color.BLACK);
         displayCircle.setFill(new ImagePattern(img));
-        displayCircle.setEffect(new DropShadow(+25d, 0d, +2d, Color.DARKSEAGREEN));
+        displayCircle.setEffect(new DropShadow(+25d, 0d, +2d, Color.BLACK));
     }
 
     public static DialogBox getUserDialog(String text, Image img) {
