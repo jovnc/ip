@@ -1,7 +1,7 @@
-package hermione.ui.fx;
+package hermione.ui.javafx;
 
 import hermione.Hermione;
-import hermione.ui.common.UiUtils;
+import hermione.utils.UiUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;

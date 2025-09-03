@@ -4,8 +4,8 @@ import hermione.exceptions.TaskValidationException;
 import hermione.storage.TaskStorage;
 import hermione.tasks.FixedDurationTask;
 import hermione.tasks.Task;
-import hermione.ui.common.UiUtils;
 import hermione.utils.NumberUtils;
+import hermione.utils.UiUtils;
 
 /**
  * Represents a command to create a fixed duration task in the Hermione application.

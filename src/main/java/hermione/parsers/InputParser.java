@@ -1,4 +1,4 @@
-package hermione.ui.common;
+package hermione.parsers;
 
 import hermione.commands.Command;
 import hermione.exceptions.DateUtilsException;
@@ -10,26 +10,26 @@ import hermione.storage.TaskStorage;
 /**
  * Responsible for processing user input commands in the Hermione application.
  */
-public class InputProcessor {
+public class InputParser {
 
     private final TaskStorage storage;
 
     /**
-     * Constructs an InputProcessor with the specified TaskStorage.
+     * Constructs an InputParser with the specified TaskStorage.
      *
      * @param storage The TaskStorage instance to be used for task management.
      */
-    public InputProcessor(TaskStorage storage) {
+    public InputParser(TaskStorage storage) {
         this.storage = storage;
     }
 
     /**
-     * Processes the user input command and returns the response message.
+     * Parses user input and returns the response message.
      *
      * @param message The user input command as a string.
-     * @return The response message after processing the command.
+     * @return The response message after parsing user input.
      */
-    public String process(String message) {
+    public String parseInput(String message) {
         String commandString = getCommandString(message);
         String argument = getArgument(message);
         return executeCommand(commandString, argument);

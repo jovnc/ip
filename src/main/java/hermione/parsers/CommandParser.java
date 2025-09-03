@@ -1,4 +1,4 @@
-package hermione.ui.common;
+package hermione.parsers;
 
 import hermione.commands.Command;
 import hermione.commands.DeadlineCommand;

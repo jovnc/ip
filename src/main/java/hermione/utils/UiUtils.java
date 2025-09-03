@@ -1,4 +1,4 @@
-package hermione.ui.common;
+package hermione.utils;
 
 import hermione.storage.TaskStorage;
 import hermione.tasks.Task;
