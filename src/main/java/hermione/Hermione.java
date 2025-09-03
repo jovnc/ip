@@ -1,10 +1,10 @@
 package hermione;
 
+import hermione.parsers.InputParser;
 import hermione.storage.CsvTaskStorage;
 import hermione.storage.TaskStorage;
-import hermione.ui.common.InputProcessor;
 import hermione.ui.console.ConsoleUi;
-import hermione.ui.fx.Main;
+import hermione.ui.javafx.Main;
 import javafx.application.Application;
 
 /**
@@ -14,7 +14,7 @@ public class Hermione {
 
     private static final String NAME = "Hermione";
 
-    private final InputProcessor inputProcessor;
+    private final InputParser inputParser;
 
     /**
      * Initializes the Hermione application with a specified file path for task storage.
@@ -25,7 +25,7 @@ public class Hermione {
      */
     public Hermione(String filePath) {
         TaskStorage storage = new CsvTaskStorage(filePath);
-        this.inputProcessor = new InputProcessor(storage);
+        this.inputParser = new InputParser(storage);
     }
 
     /**
@@ -60,6 +60,6 @@ public class Hermione {
      * @return The response message after processing the command.
      */
     public String getResponse(String input) {
-        return inputProcessor.process(input);
+        return inputParser.parseInput(input);
     }
 }

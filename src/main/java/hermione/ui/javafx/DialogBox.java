@@ -1,4 +1,4 @@
-package hermione.ui.fx;
+package hermione.ui.javafx;
 
 import java.io.IOException;
 import java.util.Collections;

@@ -4,7 +4,7 @@ import hermione.exceptions.TaskValidationException;
 import hermione.storage.TaskStorage;
 import hermione.tasks.Task;
 import hermione.tasks.ToDo;
-import hermione.ui.common.UiUtils;
+import hermione.utils.UiUtils;
 
 /**
  * Represents a command to create a new ToDo task in the Hermione application.

@@ -28,17 +28,18 @@ public class HelpCommand extends Command {
     public String execute() {
         return """
                 Available commands:
-                1. help - Show this help message
-                2. exit - Exit the application
-                3. list - List all items
-                4. todo {description} - Add a new ToDo task
-                5. deadline {description} /by {date} - Add a new Deadline task
-                6. event {description} /from {start date} /to {end date} - Add a new Event task
-                7. fixed {description} /duration {duration} - Add a new Fixed Duration task
-                7. mark {task number} - Mark a task as completed
-                8. unmark {task number} - Unmark a task as not completed
-                9. delete {task number} - Delete a task
-                10. find {keyword} - Find tasks containing the keyword
+                1. help (h) - Show this help message
+                2. bye (b) - Exit the application
+                3. list (l) - List all items
+                4. todo (t) {description} - Add a new ToDo task
+                5. deadline (dl) {description} /by {date} - Add a new Deadline task
+                6. event (e) {description} /from {start date} /to {end date} - Add a new Event task
+                7. fixed (f) {description} /duration {duration} - Add a new Fixed Duration task
+                8. mark (m) {task number} - Mark a task as completed
+                9. unmark (um) {task number} - Unmark a task as not completed
+                10. delete (d) {task number} - Delete a task
+                11. find (f) {keyword} - Find tasks containing the keyword
+                Note: You can use either the full command name or the shorthand in parentheses.
                 """;
     }
 }

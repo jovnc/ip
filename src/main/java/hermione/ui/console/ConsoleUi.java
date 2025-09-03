@@ -3,7 +3,7 @@ package hermione.ui.console;
 import java.util.Scanner;
 
 import hermione.Hermione;
-import hermione.ui.common.UiUtils;
+import hermione.utils.UiUtils;
 
 /**
  * Represents the console user interface for the Hermione application.
