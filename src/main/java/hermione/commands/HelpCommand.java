@@ -39,7 +39,6 @@ public class HelpCommand extends Command {
                 9. unmark (um) {task number} - Unmark a task as not completed
                 10. delete (d) {task number} - Delete a task
                 11. find (f) {keyword} - Find tasks containing the keyword
-                
                 Note: You can use either the full command name or the shorthand in parentheses.
                 """;
     }
