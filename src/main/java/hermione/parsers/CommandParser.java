@@ -33,18 +33,18 @@ public class CommandParser {
      * @throws InvalidCommandException If the command is not recognized.
      */
     public static Command parse(String command, String argument, TaskStorage storage) {
-        return switch (command) {
-            case "deadline" -> new DeadlineCommand(storage, argument);
-            case "todo" -> new ToDoCommand(storage, argument);
-            case "event" -> new EventCommand(storage, argument);
-            case "fixed" -> new FixedDurationTaskCommand(storage, argument);
-            case "delete" -> new DeleteCommand(storage, argument);
-            case "mark" -> new MarkCommand(storage, argument);
-            case "unmark" -> new UnmarkCommand(storage, argument);
-            case "list" -> new ListCommand(storage, argument);
-            case "find" -> new FindCommand(storage, argument);
-            case "bye" -> new ExitCommand(storage, argument);
-            case "help" -> new HelpCommand(storage, argument);
+        return switch (command.toLowerCase()) {
+            case "deadline", "dl" -> new DeadlineCommand(storage, argument);
+            case "todo", "t" -> new ToDoCommand(storage, argument);
+            case "event", "e" -> new EventCommand(storage, argument);
+            case "fixed", "fi" -> new FixedDurationTaskCommand(storage, argument);
+            case "delete", "d" -> new DeleteCommand(storage, argument);
+            case "mark", "m" -> new MarkCommand(storage, argument);
+            case "unmark", "um" -> new UnmarkCommand(storage, argument);
+            case "list", "l" -> new ListCommand(storage, argument);
+            case "find", "fd" -> new FindCommand(storage, argument);
+            case "bye", "b" -> new ExitCommand(storage, argument);
+            case "help", "h" -> new HelpCommand(storage, argument);
             default -> throw new InvalidCommandException(command);
         };
     }
