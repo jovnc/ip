@@ -1,16 +1,16 @@
 ----------------------------------------
-Hello! I'm Hermione
-What can I do for you?
+Hello! I'm Hermione, your personal assistant!
+What magical tasks can I help you organize today?
 ----------------------------------------
 > ----------------------------------------
-Got it. I've added this task:
+Brilliant! I've added this task to your list:
 [T][ ] read book
-Now you have 1 tasks in the list.
+Now you have 1 tasks to complete. Time to get organized!
 ----------------------------------------
 > ----------------------------------------
-Got it. I've added this task:
+Brilliant! I've added this task to your list:
 [T][ ] swimming
-Now you have 2 tasks in the list.
+Now you have 2 tasks to complete. Time to get organized!
 ----------------------------------------
 > ----------------------------------------
 [ERROR] Invalid command: invalid
@@ -19,71 +19,75 @@ Now you have 2 tasks in the list.
 [ERROR] Task Error: Todo Task format must be: todo {description}
 ----------------------------------------
 > ----------------------------------------
-Got it. I've added this task:
+Brilliant! I've added this task to your list:
 [D][ ] return book (by: Mar 19 2025 16:00)
-Now you have 3 tasks in the list.
+Now you have 3 tasks to complete. Time to get organized!
 ----------------------------------------
 > ----------------------------------------
 [ERROR] Task Error: Deadline Task format must be: deadline {description} /by {deadline}
 ----------------------------------------
 > ----------------------------------------
-Got it. I've added this task:
+Brilliant! I've added this task to your list:
 [E][ ] project meeting (from: Mar 19 2025 16:00 to: Mar 19 2025 18:00)
-Now you have 4 tasks in the list.
+Now you have 4 tasks to complete. Time to get organized!
 ----------------------------------------
 > ----------------------------------------
 [ERROR] Task Error: Event Task description cannot be empty.
 ----------------------------------------
 > ----------------------------------------
-Nice! I've marked this task as done:
+Fantastic! I've marked this task as completed:
 [T][X] read book
+Well done! You're making excellent progress!
 ----------------------------------------
 > ----------------------------------------
-Nice! I've marked this task as done:
+Fantastic! I've marked this task as completed:
 [T][X] swimming
+Well done! You're making excellent progress!
 ----------------------------------------
 > ----------------------------------------
-OK, I've marked this task as not done yet:
+No worries! I've marked this task as not done yet:
 [T][ ] swimming
+Don't worry, you'll get to it when you're ready!
 ----------------------------------------
 > ----------------------------------------
-Here are the tasks in your list:
+Here's your current task list:
 1. [T][X] read book
 2. [T][ ] swimming
 3. [D][ ] return book (by: Mar 19 2025 16:00)
 4. [E][ ] project meeting (from: Mar 19 2025 16:00 to: Mar 19 2025 18:00)
-You have 1 completed tasks.
+You've completed 1 tasks so far. Keep up the excellent work!
 ----------------------------------------
 > ----------------------------------------
-Here are the matching tasks in your list:
+I found these tasks matching your search:
 1. [E][ ] project meeting (from: Mar 19 2025 16:00 to: Mar 19 2025 18:00)
+Hope this helps you find what you're looking for!
 ----------------------------------------
 > ----------------------------------------
-Noted. I've removed this task:
+Right then! I've removed this task from your list:
 [T][X] read book
-Now you have 3 tasks in the list.
+Now you have 3 tasks remaining. One less thing to worry about!
 ----------------------------------------
 > ----------------------------------------
-Here are the tasks in your list:
+Here's your current task list:
 1. [T][ ] swimming
 2. [D][ ] return book (by: Mar 19 2025 16:00)
 3. [E][ ] project meeting (from: Mar 19 2025 16:00 to: Mar 19 2025 18:00)
-You have 0 completed tasks.
+You've completed 0 tasks so far. Keep up the excellent work!
 ----------------------------------------
 > ----------------------------------------
-Noted. I've removed this task:
+Right then! I've removed this task from your list:
 [T][ ] swimming
-Now you have 2 tasks in the list.
+Now you have 2 tasks remaining. One less thing to worry about!
 ----------------------------------------
 > ----------------------------------------
-Noted. I've removed this task:
+Right then! I've removed this task from your list:
 [D][ ] return book (by: Mar 19 2025 16:00)
-Now you have 1 tasks in the list.
+Now you have 1 tasks remaining. One less thing to worry about!
 ----------------------------------------
 > ----------------------------------------
-Noted. I've removed this task:
+Right then! I've removed this task from your list:
 [E][ ] project meeting (from: Mar 19 2025 16:00 to: Mar 19 2025 18:00)
-Now you have 0 tasks in the list.
+Now you have 0 tasks remaining. One less thing to worry about!
 ----------------------------------------
 > ----------------------------------------
 Bye. Hope to see you soon!
