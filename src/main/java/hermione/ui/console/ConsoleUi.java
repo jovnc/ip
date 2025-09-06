@@ -3,6 +3,7 @@ package hermione.ui.console;
 import java.util.Scanner;
 
 import hermione.Hermione;
+import hermione.parsers.ResponseResult;
 import hermione.utils.UiUtils;
 
 /**
@@ -39,15 +40,16 @@ public class ConsoleUi {
 
     /**
      * Starts the console user interface, displaying a greeting message
-     * and entering a loop to process user input commands until the application is exited.
+     * and entering a loop to process user input commands until the application is
+     * exited.
      */
     public void start() {
         printMessage(UiUtils.getGreeting(name));
 
         while (isRunning) {
             String input = getUserInput();
-            String result = hermione.getResponse(input);
-            printMessage(result);
+            ResponseResult result = hermione.getResponse(input);
+            printMessage(result.getMessage());
         }
     }
 

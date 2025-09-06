@@ -24,12 +24,12 @@ public class InputParser {
     }
 
     /**
-     * Parses user input and returns the response message.
+     * Parses user input and returns the response result.
      *
      * @param message The user input command as a string.
-     * @return The response message after parsing user input.
+     * @return The response result containing the message and error status.
      */
-    public String parseInput(String message) {
+    public ResponseResult parseInput(String message) {
         String commandString = getCommandString(message);
         String argument = getArgument(message);
         return executeCommand(commandString, argument);
@@ -44,14 +44,15 @@ public class InputParser {
         return message.substring(commandWord.length()).trim();
     }
 
-    private String executeCommand(String commandString, String argument) {
+    private ResponseResult executeCommand(String commandString, String argument) {
         try {
             Command command = CommandParser.parse(commandString, argument, storage);
-            return command.execute();
+            String response = command.execute();
+            return new ResponseResult(response, false);
         } catch (DateUtilsException | InvalidCommandException | TaskValidationException | NumberUtilsException e) {
-            return e.getMessage();
+            return new ResponseResult(e.getMessage(), true);
         } catch (Exception e) {
-            return "An unexpected error occurred. Please try again.";
+            return new ResponseResult("An unexpected error occurred. Please try again.", true);
         }
     }
 }
