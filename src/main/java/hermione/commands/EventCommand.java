@@ -64,6 +64,10 @@ public class EventCommand extends Command {
         LocalDateTime parsedFrom = DateUtils.parseDateString(from);
         LocalDateTime parsedTo = DateUtils.parseDateString(to);
 
+        if (parsedFrom.isAfter(parsedTo)) {
+            throw new TaskValidationException("Event Task start time cannot be after end time.");
+        }
+
         Task newTask = new Event(description, false, parsedFrom, parsedTo);
         storage.addTask(newTask);
 
