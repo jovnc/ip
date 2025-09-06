@@ -8,7 +8,8 @@ import hermione.utils.NumberUtils;
 import hermione.utils.UiUtils;
 
 /**
- * Represents a command to create a fixed duration task in the Hermione application.
+ * Represents a command to create a fixed duration task in the Hermione
+ * application.
  */
 public class FixedDurationTaskCommand extends Command {
 
@@ -41,6 +42,5 @@ public class FixedDurationTaskCommand extends Command {
         storage.addTask(newTask);
 
         return UiUtils.getAddTaskString(newTask, storage);
-
     }
 }

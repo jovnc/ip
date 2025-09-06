@@ -19,7 +19,8 @@ public class DeleteCommand extends Command {
      * Validates the input, checks if the task ID is valid,
      * and removes the task from the storage.
      *
-     * @return A confirmation message indicating the task has been removed and the updated task count.
+     * @return A confirmation message indicating the task has been removed and the
+     *         updated task count.
      * @throws TaskValidationException If the task ID is invalid or does not exist.
      */
     @Override
@@ -32,9 +33,9 @@ public class DeleteCommand extends Command {
             Task removedTask = storage.deleteTask(taskId - 1);
 
             TaskList tasks = storage.getTasks();
-            return "Noted. I've removed this task:\n"
+            return "Right then! I've removed this task from your list:\n"
                     + removedTask.toString()
-                    + "\nNow you have %d tasks in the list.".formatted(tasks.getSize());
+                    + "\nNow you have %d tasks remaining. One less thing to worry about!".formatted(tasks.getSize());
         } catch (NumberFormatException e) {
             throw new TaskValidationException("Invalid task id");
         } catch (IndexOutOfBoundsException e) {

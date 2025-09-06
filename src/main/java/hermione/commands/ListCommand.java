@@ -22,8 +22,9 @@ public class ListCommand extends Command {
     @Override
     public String execute() {
         TaskList tasks = storage.getTasks();
-        return "Here are the tasks in your list:\n"
+        return "Here's your current task list:\n"
                 + tasks.toString()
-                + "\nYou have %d completed tasks.".formatted(tasks.getCompletedCount());
+                + "\nYou've completed %d tasks so far. Keep up the excellent work!"
+                        .formatted(tasks.getCompletedCount());
     }
 }
