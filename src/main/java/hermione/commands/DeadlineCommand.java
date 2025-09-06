@@ -10,7 +10,8 @@ import hermione.utils.DateUtils;
 import hermione.utils.UiUtils;
 
 /**
- * Represents a command to create a new Deadline task in the Hermione application.
+ * Represents a command to create a new Deadline task in the Hermione
+ * application.
  */
 public class DeadlineCommand extends Command {
 
@@ -25,8 +26,10 @@ public class DeadlineCommand extends Command {
      * Validates the input format, extracts the description and deadline,
      * and adds the new task to the storage.
      *
-     * @return A confirmation message indicating the task has been added and the updated task count.
-     * @throws TaskValidationException If the input format is incorrect or required fields are missing.
+     * @return A confirmation message indicating the task has been added and the
+     *         updated task count.
+     * @throws TaskValidationException If the input format is incorrect or required
+     *                                 fields are missing.
      */
     @Override
     public String execute() {

@@ -15,7 +15,8 @@ public class FindCommand extends Command {
     }
 
     /**
-     * Executes the find command to search for tasks containing the specified keyword.
+     * Executes the find command to search for tasks containing the specified
+     * keyword.
      *
      * @return A string listing all matching tasks.
      */
@@ -29,6 +30,7 @@ public class FindCommand extends Command {
         TaskList tasks = storage.getTasks();
         TaskList matchingTasks = tasks.getTasksByKeyword(keyword);
 
-        return "Here are the matching tasks in your list:\n" + matchingTasks.toString();
+        return "I found these tasks matching your search:\n" + matchingTasks.toString()
+                + "\nHope this helps you find what you're looking for!";
     }
 }

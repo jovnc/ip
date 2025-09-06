@@ -32,7 +32,8 @@ public class MarkCommand extends Command {
             Task task = tasks.getTask(taskId - 1);
             storage.setTaskCompletion(task, true);
 
-            return "Nice! I've marked this task as done:\n" + task.toString();
+            return "Fantastic! I've marked this task as completed:\n" + task.toString()
+                    + "\nWell done! You're making excellent progress!";
         } catch (NumberFormatException e) {
             throw new TaskValidationException("Invalid task id");
         } catch (IndexOutOfBoundsException e) {

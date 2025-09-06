@@ -19,8 +19,10 @@ public class ToDoCommand extends Command {
      * Validates the input format, checks if the description is provided,
      * and adds the new task to the storage.
      *
-     * @return A confirmation message indicating the task has been added and the updated task count.
-     * @throws TaskValidationException If the input format is incorrect or required fields are missing.
+     * @return A confirmation message indicating the task has been added and the
+     *         updated task count.
+     * @throws TaskValidationException If the input format is incorrect or required
+     *                                 fields are missing.
      */
     @Override
     public String execute() {
