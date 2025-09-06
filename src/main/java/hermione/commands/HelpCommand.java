@@ -34,11 +34,11 @@ public class HelpCommand extends Command {
                 4. todo (t) {description} - Add a new ToDo task
                 5. deadline (dl) {description} /by {date} - Add a new Deadline task
                 6. event (e) {description} /from {start date} /to {end date} - Add a new Event task
-                7. fixed (f) {description} /duration {duration} - Add a new Fixed Duration task
+                7. fixed (fi) {description} /duration {duration} - Add a new Fixed Duration task
                 8. mark (m) {task number} - Mark a task as completed
                 9. unmark (um) {task number} - Unmark a task as not completed
                 10. delete (d) {task number} - Delete a task
-                11. find (f) {keyword} - Find tasks containing the keyword
+                11. find (fd) {keyword} - Find tasks containing the keyword
                 Note: You can use either the full command name or the shorthand in parentheses.
                 """;
     }

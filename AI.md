@@ -6,11 +6,10 @@
 
 ## #1: GUI UI Enhancements
 
-**Date**: 31/8/2025
 **Task**: Implement JavaFX GUI with Harry Potter/Hermione theme
 **AI Assistance**:
 
-- Generated CSS styling for Harry Potter theme with parchment colors and golden accents
+- Generated CSS styling for Harry Potter theme
 - Implemented button disable/enable functionality based on input field state
 - Created responsive dialog box styling with magical effects
 

@@ -1,6 +1,7 @@
 package hermione;
 
 import hermione.parsers.InputParser;
+import hermione.parsers.ResponseResult;
 import hermione.storage.CsvTaskStorage;
 import hermione.storage.TaskStorage;
 import hermione.ui.console.ConsoleUi;
@@ -17,8 +18,10 @@ public class Hermione {
     private final InputParser inputParser;
 
     /**
-     * Initializes the Hermione application with a specified file path for task storage.
-     * This constructor sets up the task storage using a CSV file and initializes the input processor
+     * Initializes the Hermione application with a specified file path for task
+     * storage.
+     * This constructor sets up the task storage using a CSV file and initializes
+     * the input processor
      * and console UI for user interaction.
      *
      * @param filePath The path to the CSV file where tasks will be stored.
@@ -30,7 +33,8 @@ public class Hermione {
 
     /**
      * Main method to run the Hermione application.
-     * This method creates an instance of Hermione with the specified task storage file path
+     * This method creates an instance of Hermione with the specified task storage
+     * file path
      * and starts the application by calling the run method.
      *
      * @param args Command line arguments.
@@ -57,9 +61,9 @@ public class Hermione {
      * Gets response from the input processor for the given input.
      *
      * @param input The user input command as a string.
-     * @return The response message after processing the command.
+     * @return The response result containing the message and error status.
      */
-    public String getResponse(String input) {
+    public ResponseResult getResponse(String input) {
         return inputParser.parseInput(input);
     }
 }

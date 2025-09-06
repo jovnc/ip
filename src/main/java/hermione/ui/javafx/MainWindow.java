@@ -1,6 +1,7 @@
 package hermione.ui.javafx;
 
 import hermione.Hermione;
+import hermione.parsers.ResponseResult;
 import hermione.utils.UiUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -35,7 +36,7 @@ public class MainWindow extends AnchorPane {
     public void initialize() {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
         dialogContainer.getChildren().add(
-                DialogBox.getDukeDialog(UiUtils.getGreeting("Hermione"), dukeImage));
+                DialogBox.getDukeDialog(UiUtils.getGreeting("Hermione"), dukeImage, false));
 
         // Initialize button as disabled
         sendButton.setDisable(true);
@@ -64,10 +65,10 @@ public class MainWindow extends AnchorPane {
         if (input == null || input.trim().isEmpty()) {
             return; // Don't process empty input
         }
-        String response = hermione.getResponse(input);
+        ResponseResult responseResult = hermione.getResponse(input);
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
-                DialogBox.getDukeDialog(response, dukeImage));
+                DialogBox.getDukeDialog(responseResult.getMessage(), dukeImage, responseResult.isError()));
         userInput.clear();
     }
 }
