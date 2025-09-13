@@ -18,7 +18,7 @@ public class HelpCommand extends Command {
     }
 
     /**
-     * Executes the command to display help information.
+     * Executes the command to display help1 information.
      * This method returns a string containing a list of available commands
      * and their descriptions.
      *

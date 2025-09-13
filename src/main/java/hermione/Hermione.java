@@ -9,7 +9,7 @@ import hermione.ui.javafx.Main;
 import javafx.application.Application;
 
 /**
- * The main class for the Hermione application.
+ * Main class for the Hermione application.
  */
 public class Hermione {
 
@@ -18,13 +18,9 @@ public class Hermione {
     private final InputParser inputParser;
 
     /**
-     * Initializes the Hermione application with a specified file path for task
-     * storage.
-     * This constructor sets up the task storage using a CSV file and initializes
-     * the input processor
-     * and console UI for user interaction.
+     * Constructs a new Hermione instance.
      *
-     * @param filePath The path to the CSV file where tasks will be stored.
+     * @param filePath Path to the CSV file where tasks are stored.
      */
     public Hermione(String filePath) {
         TaskStorage storage = new CsvTaskStorage(filePath);
@@ -32,12 +28,9 @@ public class Hermione {
     }
 
     /**
-     * Main method to run the Hermione application.
-     * This method creates an instance of Hermione with the specified task storage
-     * file path
-     * and starts the application by calling the run method.
+     * Starts the application in either console or GUI mode based on command-line arguments.
      *
-     * @param args Command line arguments.
+     * @param args Command-line arguments. Accepts an optional '--console' flag.
      */
     public static void main(String[] args) {
         if (args.length > 1) {
@@ -58,12 +51,13 @@ public class Hermione {
     }
 
     /**
-     * Gets response from the input processor for the given input.
+     * Parses the user input and returns the corresponding response.
      *
-     * @param input The user input command as a string.
-     * @return The response result containing the message and error status.
+     * @param input The user input command.
+     * @return The result of parsing the input.
      */
     public ResponseResult getResponse(String input) {
+
         return inputParser.parseInput(input);
     }
 }
